@@ -1,0 +1,1 @@
+Deface::Override.new(:virtual_path  => "spree/admin/orders/index",:insert_before => "[data-hook='admin_orders_index_header_actions']", :text  => "<th><%= sort_link @search, :bid_price, 'Bid Price' %></th>", :name => "alter_table")
