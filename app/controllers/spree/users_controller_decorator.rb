@@ -4,7 +4,7 @@ module Spree
     def send_email
       @order = Order.where(:number => params[:id]).first
       if params[:bid] == "accept"
-        UserMailer.contact_user(@order.user_id).deliver
+        UserMailer.contact_user(@order.user_id, @order).deliver
         redirect_to admin_order_payments_path(params[:id])
       else
         if @order.update_attribute('state','canceled')

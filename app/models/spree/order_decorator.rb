@@ -21,7 +21,7 @@ Spree::Order.class_eval do
     self.line_items.each do |obj| 
       total_bid = total_bid + (obj.bid_price*obj.quantity) unless obj.bid_price.nil?
     end
-    Spree::Money.new(total_bid, { currency: 'USD' })
+    Spree::Money.new(total_bid, { currency: 'PLN' })
   end
 
 end
