@@ -2,13 +2,25 @@
 
 $(document).ready(function(){
 	$('#add-to-cart-button').attr('disabled', true)
-	$(document).on('blur', '#bid_price', function(){
-		if(parseInt($(this).val()) < parseInt($('#bd_pz').text().slice(2))){
-			alert("your bid must be greater than the minimun bid");
-
-		}
-		else{
-			$('#add-to-cart-button').attr('disabled', false);
-		}
 })
+
+$(document).on('blur', '#bid_price', function(){
+	var min_bid = $('#bd_pz').text().slice(2)
+	var user_bid = $(this).val()
+	if((parseInt(user_bid) > parseInt(min_bid)) && user_bid != ""){
+		$('#add-to-cart-button').attr('disabled', false);
+	}else{
+		$( "#dialog" ).dialog();
+		$('#add-to-cart-button').attr('disabled', true);
+	}
+})
+
+$(document).on('click', '.ui-button', function(){
+	$('#add-to-cart-button').attr('disabled', true);
+})
+
+$(document).on('click', '#add-to-cart-button', function(){
+	if($('#bid_price').val()==""){
+		$('#add-to-cart-button').attr('disabled', true);
+	}
 })

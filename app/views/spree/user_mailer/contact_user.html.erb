@@ -1,17 +1,15 @@
 <p>Dear Customer,</p>
 
-<p>Following order information for your records.</p>
+<p>You have placed bid.</p>
 
 <p>============================================================</p>
-<p>Order Summary</p>
+<p>Summary</p>
 <p>============================================================</p>
 <% @order.line_items.each do |item| %>
   <p><%= item.product.name %> (<%= item.quantity %>) @ <%= Spree::Money.new(item.bid_price, {currency: 'PLN'}) %> = <%= Spree::Money.new(@order.display_total_bid_price, {currency: 'PLN'})%></p>
 <% end %>
 <p>============================================================</p>
-<p>Sub Total: <%= @order.display_total_bid_price %></p>
-
-<p>Order Total: <%= @order.display_total_bid_price %></p>
+<p>Total: <%= @order.display_total_bid_price %></p>
 
 <p>Thank you for your business.</p>
 
