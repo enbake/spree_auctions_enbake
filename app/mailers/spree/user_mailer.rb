@@ -4,7 +4,8 @@ class Spree::UserMailer < ActionMailer::Base
   def contact_user(user, order)
     contact = Spree::User.find user
     @order = order
-    mail(:to => contact.email, :subject => "Welcome to Action House")
+    subject = "#{Spree.t('order_mailer.confirm_email.bid_email_subject')}"
+    mail(:to => contact.email, :subject => subject)
   end
 end
 

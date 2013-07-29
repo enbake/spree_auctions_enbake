@@ -1,15 +1,15 @@
-<p>Dear Customer,</p>
+<p><%= Spree.t('order_mailer.confirm_email.dear_customer') %></p>
 
-<p>You have placed bid.</p>
+<p><%= Spree.t('order_mailer.confirm_email.bid_accepted') %></p>
+<p><%= Spree.t('order_mailer.confirm_email.bid_order_no') %> <%=@order.number%></p>
 
-<p>============================================================</p>
-<p>Summary</p>
-<p>============================================================</p>
-<% @order.line_items.each do |item| %>
-  <p><%= item.product.name %> (<%= item.quantity %>) @ <%= Spree::Money.new(item.bid_price, {currency: 'PLN'}) %> = <%= Spree::Money.new(@order.display_total_bid_price, {currency: 'PLN'})%></p>
-<% end %>
-<p>============================================================</p>
-<p>Total: <%= @order.display_total_bid_price %></p>
+<p><%= "#{Spree.t('order_mailer.confirm_email.bid_payment_message')} " "#{AppConfig.paypal['id']}" %></p>
+<p><%= Spree.t('order_mailer.confirm_email.bid_address') %></p>
+<p><%= @order.ship_address.firstname %><%= @order.ship_address.lastname %></p>
+<p><%= @order.ship_address.address1 %></p>
+<p><%= @order.ship_address.address2 %></p>
+<p><%= @order.ship_address.city %></p>
+<p><%= @order.ship_address.state_name %></p>
+<p><%= @order.ship_address.phone %></p>
 
-<p>Thank you for your business.</p>
-
+<p><%= Spree.t('order_mailer.confirm_email.thanks') %></p>

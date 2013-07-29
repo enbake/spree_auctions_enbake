@@ -1,9 +1,13 @@
-Deface::Override.new(:virtual_path  => "spree/products/_cart_form", :replace => "div#product-price", :text  => '<div id="product_price">
-          <h6 class="product_section_title"><%= Spree.t(:Minimum_Bid) %></h6>
+Deface::Override.new(:virtual_path  => "spree/products/_cart_form", :replace => "div#product-price", :text  => '<div id="product-price" style="float:none">
+          <h6><%= Spree.t(:minimum_bid) %></h6>
           <div>
-            <span class="price_selling" itemprop="price">
-              <%= content_tag :span, "#{@product.variants.first.blank?}" == "true" ?  nil : (Spree::Money.new(@product.variants.first.bid_price, {currency: "PLN"})), :style => "font-weight:bold;font-size:25px;color:#00ADEE;", :id => "bd_pz"  %>
+            <span class="price selling" id="bd_pz" itemprop="price">
+              <%= display_price(@product.master) %>
             </span>
             <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
           </div>
+
+          <% if @product.master.in_stock? %>
+            <link itemprop="availability" href="http://schema.org/InStock" />
+          <% end %> 
         </div>', :name => "show_bid")

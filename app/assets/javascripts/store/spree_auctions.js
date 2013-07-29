@@ -6,8 +6,8 @@ $(document).ready(function(){
 
 $(document).on('blur', '#bid_price', function(){
 	var min_bid = $('#bd_pz').text().slice(2)
-	var user_bid = $(this).val()
-	if((parseInt(user_bid) > parseInt(min_bid)) && user_bid != ""){
+	var user_bid = $(this).val().trim()
+	if((parseFloat(user_bid) > parseFloat(min_bid)) && user_bid != ""){
 		$('#add-to-cart-button').attr('disabled', false);
 	}else{
 		$( "#dialog" ).dialog();
