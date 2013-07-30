@@ -58,12 +58,12 @@ Steps to Place a Bid:
 
 Steps to Accept/Reject the Bid:
 
-  1.Login as a admin.
-  2.Open the page '/admin' which display the list of all the bids.
-  3.Click on envelope like icon button in front of the bid you want to accept/reject.
-  4.A new page is open with two options 'Accept' and 'Reject'.
-  5.If you want to accpet the bid, select 'Accept' and click 'Proceed' button. A confirmation mail is send to the user whose bid is accepted.
-  6.If you want to reject the bid, select 'Reject' and click 'Proceed' button. Then selected bid is cancelled. 
+  1. Login as a admin.
+  2. Open the page '/admin' which display the list of all the bids.
+  3. Click on envelope like icon button in front of the bid you want to accept/reject.
+  4. A new page is open with two options 'Accept' and 'Reject'.
+  5. If you want to accpet the bid, select 'Accept' and click 'Proceed' button. A confirmation mail is send to the user whose bid is accepted.
+  6. If you want to reject the bid, select 'Reject' and click 'Proceed' button. Then selected bid is cancelled. 
 
 Testing
 -------
