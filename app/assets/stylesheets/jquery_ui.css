@@ -1179,3 +1179,11 @@ body .ui-tooltip {
 .ui-dialog .ui-widget-header, .ui-dialog .ui-dialog-titlebar{
    background-color:#99C165
 }
+
+.ui-dialog-titlebar .ui-button{
+	background:url("/assets/ui-bg_highlight-soft_100_f6f6f6_1x100.png") repeat-x scroll 50% 50% #F6F6F6 !important;
+}
+
+.ui-dialog-titlebar .ui-icon-closethick{
+	background-image:url("/assets/ui-icons_666666_256x240.png") !important;
+}
