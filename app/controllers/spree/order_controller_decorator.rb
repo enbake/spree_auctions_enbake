@@ -22,5 +22,10 @@ module Spree
     def confirmation
     end
     end
+
+    def paypal_payment
+      @order = Spree::Order.find(params[:order_id])
+      render "spree/checkout/edit"
+    end
   end
 end

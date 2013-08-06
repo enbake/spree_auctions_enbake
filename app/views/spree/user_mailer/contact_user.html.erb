@@ -4,6 +4,8 @@
 <p><%= Spree.t('order_mailer.confirm_email.bid_order_no') %> <%=@order.number%></p>
 
 <p><%= "#{Spree.t('order_mailer.confirm_email.bid_payment_message')} " "#{AppConfig.paypal['id']}" %></p>
+<p><%= Spree.t('order_mailer.confirm_email.make_payment') %></p>
+
 <p><%= Spree.t('order_mailer.confirm_email.bid_address') %></p>
 <p><%= @order.ship_address.firstname %><%= @order.ship_address.lastname %></p>
 <p><%= @order.ship_address.address1 %></p>

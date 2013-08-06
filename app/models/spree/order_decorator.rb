@@ -24,4 +24,8 @@ Spree::Order.class_eval do
     Spree::Money.new(total_bid, { currency: 'PLN' })
   end
 
+  def self.paypal_payment_method
+    Spree::PaymentMethod.select{ |pm| pm.name.downcase =~ /paypal/}.first
+  end
+
 end

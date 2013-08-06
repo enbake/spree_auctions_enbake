@@ -1,0 +1,9 @@
+<div>
+   <h2>Payment Options</h2><br/>
+	<form action="/payment_options" method="get">
+      <input type="radio" name="payment" value="paypal"><span style="font-size: 15px; margin-left: 6px;">Use the Paypal</span></input></br></br>
+      <input type="radio" name="payment" value="cash"><span style="font-size: 15px; margin-left: 6px;">Pay by Cash</span></input></br></br>
+      <input type="hidden" name="order_id" value="<%=params[:order_id]%>">
+      <input type="Submit" value="Proceed">
+   </form>
+</div>
