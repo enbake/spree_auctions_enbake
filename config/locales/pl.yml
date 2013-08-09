@@ -1,0 +1,19 @@
+pl:
+  hello: "Hello world"
+  spree:
+    your_bid_has_been_added_to_the_system: "Your bid has been added to the system"
+    bid_price: "Bid Price"
+    minimum_bid: "Minimum Bid"
+    order_mailer:
+      confirm_email:
+        bid_place_message: "Your bid is now placed, you will get the result of your bid soon..."
+        bid_accepted: "Your Bid has been Accepted."
+        bid_order_no: "Order No."
+        bid_payment_message: To receive your order, make the payment to the account
+        bid_ship_message: " Your order will be shipped to following address. "
+        bid_address: "Your shipping Adress:"
+        subject: "House Order"
+        bid_email_subject: "Welcome to Auction House"
+        make_payment: "To make the payment, login to your account then select 'Payment' link from top of navigation bar."
+    my_payments: "My Payments"
+    Approved: "Approved"
