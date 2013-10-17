@@ -15,6 +15,8 @@ module Spree
       end
     end
     def index
+      @searcher = build_searcher(params)
+      @products = @searcher.retrieve_products
       slider = Spree::Taxon.where(:name => 'Slider').first
       @slider_products = slider.products.active if slider
   
