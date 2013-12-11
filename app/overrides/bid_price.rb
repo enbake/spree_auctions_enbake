@@ -1,7 +1,7 @@
 Deface::Override.new(
     :virtual_path  => "spree/products/_cart_form",
     :replace => "div.add-to-cart", 
-    :text  => '<div class="add-to-cart"><%= number_field_tag (@product.variants_and_option_values.any? ? :quantity : "variants[#{@product.master.id}]"),
+    :text  => '<div class="add-to-cart"><%#= number_field_tag (@product.variants_and_option_values.any? ? :quantity : "variants[#{@product.master.id}]"),
             1, :class => "title", :min => 1 %>
           <%= button_tag :class => "large primary",:disabled => false, :id => "add-to-cart-button", :type => :button do %>
             <%= Spree.t(:place_bid) %>

@@ -7,9 +7,6 @@ Deface::Override.new(
   <br clear="left" />
   <%= render "spree/shared/error_messages", :target => @order %>
   <%#= hook :checkout_summary_box do %>
-    <div id="checkout-summary">
-      <%= render "spree/checkout/summary", :order => @order %>
-    </div>
   <%# end %>
 
   <% if(@order.state == "Approved") %>
