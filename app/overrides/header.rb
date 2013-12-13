@@ -9,9 +9,9 @@ Deface::Override.new(
             <li><%= link_to Spree.t(:Best_Offer), "#" %></li>"
             <li><%= link_to Spree.t(:About_us), "#" %></li>"
             <li><%= link_to Spree.t(:Contact), "#" %></li>"
-            <li><%= link_to Spree.t(:Signup), new_spree_user_registration_path %></li>"
-            <li><%= link_to Spree.t(:sign_in), spree_user_session_path %></li>"
-         
+            <li><%= link_to Spree.t(:Signup), new_spree_user_registration_path if session[:flash].blank? %></li>"
+            <li><%= link_to Spree.t(:sign_in), spree_user_session_path if session[:flash].blank? %></li>"
+            <li><%= link_to Spree.t(:sign_out), destroy_spree_user_session_path unless session[:flash].blank? %></li>"
             </div >',
 
     :name => "header")

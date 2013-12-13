@@ -10,9 +10,7 @@ Deface::Override.new(
     </tr>
   </thead>
   <tbody id='line_items' data-hook>
-    <%= order_form.fields_for :line_items do |item_form| %>
-      <%= render :partial => 'line_item', :locals => { :variant => item_form.object.variant, :line_item => item_form.object, :item_form => item_form } %>
-    <% end %>
+      <%= render :partial => 'line_item', :locals => { :variant => @order.line_items.first.variant, :line_item => @order.line_items.first, :item_form => @order.line_items.first } %>
   </tbody>
   <%= render 'spree/orders/adjustments' unless @order.adjustments.eligible.blank? %> </table>",
   :name => "checkout_form")

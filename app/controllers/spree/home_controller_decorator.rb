@@ -25,11 +25,11 @@ module Spree
   
       latest = Spree::Taxon.where(:name => 'Latest').first
       @latest_products = latest.products.active if latest
-
       if params.has_key?(:invoice) && params[:payer_status] == "verified"
         Spree::Order.where(:number => params[:invoice]).first.update_attribute('payment_state','complete')
       elsif session.has_key?(:order_id)
-        Spree::Order.find(session[:order_id]-1).update_attribute('payment_state','complete')
+        order= Spree::Order.find_by_id(session[:order_id]-1)
+        order ? order.update_attribute('payment_state','complete') : Spree::Order.find_by_id(session[:order_id]).update_attribute('payment_state','complete')
         session.delete("order_id")
       end
     end
