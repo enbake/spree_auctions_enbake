@@ -41,21 +41,21 @@ Deface::Override.new(
             </ul>
             </div>
              <div class='row'><div class='span7' data-hook='product_left_part'>
-               <div data-hook='product_left_part_wrap'>
-                 <div id='product-images' data-hook='product_images'>
-                  <div id='main-image' data-hook >
-                  <%= link_to((@product.images.first.attachment.url))%>
-                   <%= render :partial => 'image' %>
-                  </div>
-                  <div id='thumbnails' data-hook>
-                   <%= render :partial => 'thumbnails' %>
-                  </div>
-                 </div>
-                <div id='product-description' data-hook='product_description' style= 'margin-top:30px;width:660px'>
-                  <div itemprop='description' data-hook='description'>
-                   <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
-                </div>
-               </div>
+                 <div data-hook='product_left_part_wrap'>
+                   <div id='product-images' data-hook='product_images'>
+                    <div id='main-image' data-hook >
+                     <%= link_to((@product.images.first.attachment.url))%>
+                     <%= render :partial => 'image' %>
+                     </div>
+                     <div id='thumbnails' data-hook>
+                      <%= render :partial => 'thumbnails' %>
+                     </div>
+                    </div>
+                    <div id='product-description' data-hook='product_description' style= 'margin-top:30px;width:660px'>
+                      <div itemprop='description' data-hook='description'>
+                        <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
+                      </div>
+                    </div>
              </div>
              </div>
              
@@ -69,11 +69,11 @@ Deface::Override.new(
               <h5>FAQ</h5>
               <hr style='border-color:black'>
               <ul style='list-style:none'>
-               <li>Where can i see the product?</li>
-               <li>How to bid an auctions</li>
-               <li>Is it safe</li>
-               <li>Lurem ipsum dolor</li>
-               <li>Non om</li>
+               <li><%= link_to 'Where can i see the product?', static_pages_index_path %></li>
+                <li><%= link_to 'How to bid an auctions?', static_pages_index_path %></li>
+                 <li><%= link_to 'Is it safe?', static_pages_index_path %></li>
+                  <li><%= link_to 'Lurem ipsum dolor', static_pages_index_path %></li>
+                   <li><%= link_to 'Non om', static_pages_index_path %></li>
              </ul>
              </div>
             </div>
