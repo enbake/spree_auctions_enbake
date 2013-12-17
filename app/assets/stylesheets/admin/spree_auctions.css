@@ -1,3 +1,7 @@
 /*
  *= require admin/spree_backend
 */
+
+.no_border{
+	border:none !important;
+}

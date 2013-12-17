@@ -69,11 +69,9 @@ Deface::Override.new(
               <h5>FAQ</h5>
               <hr style='border-color:black'>
               <ul style='list-style:none'>
-               <li><%= link_to 'Where can i see the product?', static_pages_index_path %></li>
-                <li><%= link_to 'How to bid an auctions?', static_pages_index_path %></li>
-                 <li><%= link_to 'Is it safe?', static_pages_index_path %></li>
-                  <li><%= link_to 'Lurem ipsum dolor', static_pages_index_path %></li>
-                   <li><%= link_to 'Non om', static_pages_index_path %></li>
+                <% StaticPage.all.each_with_index do |sp, count|%>
+                  <li><%= link_to sp.title, admin_static_pages_path(anchor: 'static_question_' + (count+1).to_s)%>
+                <% end %>
              </ul>
              </div>
             </div>

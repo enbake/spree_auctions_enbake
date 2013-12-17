@@ -5,10 +5,13 @@ class Spree::Admin::StaticPagesController < Spree::Admin::BaseController
     @data =StaticPage.all
   end
 
+  def new
+    @static_page = StaticPage.new
+  end
+
   def create 
-    @title = params[:title]
-    @description = params[:description]
-    @save= StaticPage.create(:title => @title,:description => @description ) unless @title.blank?
-    redirect_to :back unless @save.blank?
+    StaticPage.create!(params[:static_page])
+    flash[:notice] = "Topic successfully created"
+    redirect_to '/admin'
   end
 end

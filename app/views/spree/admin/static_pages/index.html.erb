@@ -1,12 +1,16 @@
+<div>
+<% count = 1%>
 <% @data.each do |staticpage| %>
-    <div>
-    	<h1><%= staticpage.title %></h1>
-		</div>
-		<div>
-       <h5><%= raw staticpage.description %></h5>
-      </div>   
-		<br/>
-		<br/>
+<div id="static_question_<%= count %>">
+    <h3><%= count%>. <%= staticpage.title %></h3>
+</div>
+<div>
+    <h5><%= raw staticpage.description %></h5>
+</div>
+<br/>
+<br/>
+<% count+=1%>
 <% end %>
-<br />
-<%= button_to "BACK",spree.root_path %>
+<br/>
+<%= button_to "BACK", :back, :method => 'get' %>
+</div>
