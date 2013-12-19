@@ -16,7 +16,9 @@ Spree::Core::Engine.routes.draw do
 #      #post '/', :to => 'Admin/StaticPages#create'
       namespace :admin do
         resources :static_pages
+        resources :categories
       end
       
+      resources :view_categories
 	end
 end

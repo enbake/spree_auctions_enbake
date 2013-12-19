@@ -1,0 +1,25 @@
+<%= content_tag :div do%>
+<div id="showcase">
+    <div class="features_op1_row">
+        <ul class="thumbnails" data-hook>
+            <% @products.each do |product| %>
+            <li class="span3 feature" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+                <div class="img_box">
+                    <a href="<%= url_for product %>"><% unless product.images.empty? %>
+                        <%= image_tag(product.images.first.attachment.url) %>
+                        <% end %>
+                        <span class="circle"><span class="plus">+</span></span></a>
+                </div>
+                <div class="text">
+                    <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
+                    <div class="price selling" itemprop="price">
+                        <%= display_price(product) %>
+                    </div>
+                </div>
+            </li>
+            <% end %>
+            <% reset_cycle("classes") %>
+        </ul>
+    </div>
+</div>
+<% end %>

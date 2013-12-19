@@ -27,25 +27,19 @@ Deface::Override.new(
               <h5>Categories</h5>
               <hr style='border-color:black'>
             <ul style='list-style:none'>
-               <li>Painting</li>
-               <li>Sculpture</li>
-               <li>Bronzes</li>
-               <li>Coins</li>
-               <li>Furniture</li>
-               <li>Silver</li>
-               <li>Lorem</li>
-               <li>Ipsum</li>
-               <li>Dolor</li>
-               <li>Sir</li>
-               <li>Amet</li>
+               <% Spree::Category.all.each do |category| %>
+                 <li><%= link_to category.name, view_category_path(category) %></li>
+               <% end %>
             </ul>
             </div>
              <div class='row'><div class='span7' data-hook='product_left_part'>
                  <div data-hook='product_left_part_wrap'>
                    <div id='product-images' data-hook='product_images'>
                     <div id='main-image' data-hook >
+                    <% unless @product.images.empty? %>
                      <%= link_to((@product.images.first.attachment.url))%>
                      <%= render :partial => 'image' %>
+                     <% end %>
                      </div>
                      <div id='thumbnails' data-hook>
                       <%= render :partial => 'thumbnails' %>
