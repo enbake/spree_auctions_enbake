@@ -1,75 +1,72 @@
 Deface::Override.new(
    :virtual_path  => "spree/products/show",
    :replace => "div#blog_post",
-   :text => "<div id='blog_post'>
-            <div class='container' data-hook='product_show' itemscope itemtype='http://schema.org/Product'>
-            <% @body_id = 'product-details' %>
-            <div class='section_header' style='margin-bottom:0px !important;margin-left:32px'>
-       <!--      <h3 style='float:right;margin-top:50px;'><%= accurate_title %></h3> -->
-  
-            <div>
-                 <div class ='span2' style = 'margin-top:6px;display:inline-block;margin-left:-1px'> <%= link_to 'Back_to_catalog', spree.root_path ,:class =>'btn',:style => 'width:145px'%></div>
-              <ul class='breadcrumb' style='display:inline-block;margin-left:33px'>
-               <li>
-                 <a href= '/'>Home</a> <span class='divider'>></span>
-               </li>
-               <li>
-                 <a href='#'>Catalog</a> <span class='divider'>></span>
-               </li>
-               <li>
-                 <a href='#'>Xyz</a> <span class='divider'>></span>
-               </li>
-               <li class = 'active'><%= accurate_title%></li>
-                 </ul>
-            </div>
-             </div>
-            <div class='span2' style='border:2px solid black;min-height:380px'>
-              <h5>Categories</h5>
-              <hr style='border-color:black'>
-            <ul style='list-style:none'>
-               <% Spree::Category.all.each do |category| %>
-                 <li><%= link_to category.name, view_category_path(category) %></li>
-               <% end %>
+   :text => "
+  <div id='blog_post'>
+    <div class='container' data-hook='product_show' itemscope itemtype='http://schema.org/Product'>
+      <% @body_id = 'product-details' %>
+
+      <div class='row'>
+
+        <div class='span2'>
+          
+          <%= link_to 'Do Katalogu', spree.root_path ,:class =>'btn btn-primary btn-block'%>
+          <hr>
+          <div class='sidebar' style='float: none;'>
+            <div class='sidebar_header'><h4>Kategorie</h4></div>
+            <ul class='sidebar_menu'>
+              <% Spree::Category.all.each do |category| %>
+                <li><%= link_to category.name, view_category_path(category) %></li>
+              <% end %>
             </ul>
-            </div>
-             <div class='row'><div class='span7' data-hook='product_left_part'>
-                 <div data-hook='product_left_part_wrap'>
-                   <div id='product-images' data-hook='product_images'>
-                    <div id='main-image' data-hook >
-                    <% unless @product.images.empty? %>
-                     <%= link_to((@product.images.first.attachment.url))%>
-                     <%= render :partial => 'image' %>
-                     <% end %>
-                     </div>
-                     <div id='thumbnails' data-hook>
-                      <%= render :partial => 'thumbnails' %>
-                     </div>
-                    </div>
-                    <div id='product-description' data-hook='product_description' style= 'margin-top:30px;width:660px'>
-                      <div itemprop='description' data-hook='description'>
-                        <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
-                      </div>
-                    </div>
-             </div>
-             </div>
-             
-             
-             <div class='span3' style='min-height:231px;float:right;margin-top:-321px'>
-              <h3><%= accurate_title %></h3>
-              <div id='cart-form' data-hook='cart_form' style = 'border-bottom:2px solid black;margin-bottom:38px;min-height:371px'>
-               <%= render :partial => 'cart_form' %>
-              </div>
-              <div style ='border:2px solid black' >
-              <h5>FAQ</h5>
-              <hr style='border-color:black'>
-              <ul style='list-style:none'>
-                <% StaticPage.all.each_with_index do |sp, count|%>
-                  <li><%= link_to sp.title, admin_static_pages_path(anchor: 'static_question_' + (count+1).to_s)%>
+          </div>
+
+        </div>
+
+
+        <div class='span7' data-hook='product_left_part'>
+          <div class='section_header'>
+            <h3><%= accurate_title %></h3>
+          </div>
+          <div data-hook='product_left_part_wrap'>
+            <div id='product-images' data-hook='product_images'>
+              <div id='main-image' data-hook >
+                <% unless @product.images.empty? %>
+                  <%= render :partial => 'image' %>
                 <% end %>
-             </ul>
-             </div>
+              </div>
+              <div id='thumbnails' data-hook>
+                <%= render :partial => 'thumbnails' %>
+              </div>
             </div>
-            
-             </div>
-             </div>",
+            <div id='product-description' data-hook='product_description'>
+              <div itemprop='description' data-hook='description'>
+                <p><%= product_description(@product) rescue Spree.t(:product_has_no_description) %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class='span3'>
+          <div class='sidebar'>
+            <div class='box'>
+              <div id='cart-form' data-hook='cart_form'>
+                <%= render :partial => 'cart_form' %>
+              </div>
+            </div>
+            <div class='sidebar_header'><h4>FAQ</h4></div>
+            <ul class='sidebar_menu'> 
+              <% StaticPage.all.each_with_index do |sp, count|%>
+                <li><%= link_to sp.title, admin_static_pages_path(anchor: 'static_question_' + (count+1).to_s)%></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+    ",
    :name => "product_title")
