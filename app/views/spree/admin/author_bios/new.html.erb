@@ -1,0 +1,26 @@
+<%= form_for [:admin, @bio] do |f| %>
+<table class = "no_border">
+    <tr class="no_border">
+        <td class="no_border">
+            <%= f.label :name %>
+        </td>
+        <td class="no_border">
+            <%= f.text_field :name %>
+        </td>
+    </tr>
+    <tr class="no_border">
+        <td class="no_border">
+            <%= f.label :biography %>
+        </td>
+        <td class="no_border">
+            <%= f.text_area :biography, :id => "bio_description" %>
+        </td>
+    </tr>
+    <tr>
+    	<td class="no_border"></td>
+        <td class="no_border" colspan= "2" style="float:right;">
+            <%= f.submit 'Save' %>
+        </td>
+    </tr>
+</table>
+<% end %>

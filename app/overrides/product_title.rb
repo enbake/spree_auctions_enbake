@@ -44,6 +44,9 @@ Deface::Override.new(
                 <p><%= product_description(@product) rescue Spree.t(:product_has_no_description) %></p>
               </div>
             </div>
+              <div>
+                <%= render :partial => 'fields' %>
+              </div>
           </div>
         </div>
 
