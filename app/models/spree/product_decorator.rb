@@ -19,7 +19,7 @@ module Spree
     attr_accessible :author_bio_id
     
     #validates :minimal_price, presence: true
-    validates :auction_end, presence: true
+    #validates :auction_end, presence: true
 
     after_save :save_categories
     
