@@ -3,7 +3,7 @@ Deface::Override.new(
    :replace => "div#blog_post",
    :text => "
   <div id='blog_post'>
-    <div class='container' data-hook='product_show' itemscope itemtype='http://schema.org/Product'>
+    <div data-hook='product_show' itemscope itemtype='http://schema.org/Product'>
       <% @body_id = 'product-details' %>
 
       <div class='row'>
