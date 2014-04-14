@@ -17,6 +17,8 @@ module Spree
     attr_accessible :art_height
     attr_accessible :art_depth
     attr_accessible :author_bio_id
+    attr_accessible :unframed_width
+    attr_accessible :unframed_height
     
     validates :minimal_price, presence: true
     validates :auction_end, presence: true
