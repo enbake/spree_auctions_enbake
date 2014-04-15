@@ -35,9 +35,6 @@ Deface::Override.new(
                   <%= render :partial => 'image' %>
                 <% end %>
               </div>
-              <div id='thumbnails' data-hook>
-                <%= render :partial => 'thumbnails' %>
-              </div>
             </div>
             <div id='product-description' data-hook='product_description'>
               <div itemprop='description' data-hook='description'>
