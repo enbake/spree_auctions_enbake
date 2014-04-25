@@ -1,4 +1,4 @@
-class Spree::UserMailer < ActionMailer::Base
+class Spree::UserMailer < Devise::Mailer
   default :from => "support@spreeauction.com"
   
   def contact_user(user, order)
