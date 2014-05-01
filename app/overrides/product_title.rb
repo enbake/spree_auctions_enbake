@@ -44,6 +44,9 @@ Deface::Override.new(
               <div>
                 <%= render :partial => 'fields' %>
               </div>
+              <div>
+                <%= render :partial => 'auction_history' %>
+              </div>
           </div>
         </div>
 
