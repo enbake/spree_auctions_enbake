@@ -11,6 +11,8 @@ Spree::Core::Engine.routes.draw do
       match "paypal_payment" => "orders#paypal_payment", :as => "orders_paypal_payment"
       match "payment_options" => "home#payment_options", :as => "home_payment_options"
       match "payment" => "users#payment"
+      match "profile" => "users#profile"
+      match "auctions" => "users#auctions"
 #      get '/static_pages/index', :to => 'Admin/StaticPages#index'
 #      get '/static_pages/new', :to => 'Admin/StaticPages#new' 
 #      #post '/', :to => 'Admin/StaticPages#create'

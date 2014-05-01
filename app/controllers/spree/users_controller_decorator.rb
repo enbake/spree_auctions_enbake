@@ -26,5 +26,31 @@ module Spree
       @orders = @user.orders.complete.order('completed_at desc')
       @orders = @orders.where(:state => "Approved" ,:payment_state => "balance_due")
     end
+
+    
+    def update
+      if @user.update_attributes(params[:user])
+        if params[:user][:password].present?
+          # this logic needed b/c devise wants to log us out after password changes
+          user = Spree::User.reset_password_by_token(params[:user])
+          sign_in(@user, :bypass => true)
+        end
+        redirect_to "/profile", :notice => Spree.t(:account_updated)
+      else
+        redirect_to "/profile", :notice => @user.errors.full_messages.join(", ")
+      end
+    end
+
+    def profile
+      @user ||= spree_current_user
+      unless @user.user_address
+        @user.build_user_address
+      end
+    end
+
+    def auctions
+      @orders =  Spree::Order.joins(line_items: [variant: [:product]]).where("available_on < ? and auction_end > ? and state not IN (?) and user_id = ? ", Date.today, Date.today, ["cart", "confirm"], spree_current_user.id).order("created_at Desc")
+      @order_history = Spree::Order.joins(line_items: [variant: [:product]]).where("available_on < ? and auction_end < ? and state not IN (?) and user_id = ? ", Date.today, Date.today, ["cart", "confirm"], spree_current_user.id).order("created_at Desc")
+    end
   end
 end
