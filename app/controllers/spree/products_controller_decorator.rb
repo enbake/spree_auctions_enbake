@@ -12,7 +12,7 @@ module Spree
       return unless @product
 
       product = Spree::Product.find_by_permalink(params[:id])
-      @orders = Spree::Order.joins(line_items: [:variant]).where("spree_variants.product_id = ?", product.id).order("created_at")
+      @orders = Spree::Order.joins(line_items: [:variant]).where("spree_variants.product_id = ? and user_id is not ?", product.id, nil).order("created_at")
 
       @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
       @product_properties = @product.product_properties.includes(:property)
