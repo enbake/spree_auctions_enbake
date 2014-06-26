@@ -13,6 +13,7 @@ Spree::Core::Engine.routes.draw do
       match "payment" => "users#payment"
       match "profile" => "users#profile"
       match "auctions" => "users#auctions"
+      match "catalog" => "users#catalog"
 #      get '/static_pages/index', :to => 'Admin/StaticPages#index'
 #      get '/static_pages/new', :to => 'Admin/StaticPages#new' 
 #      #post '/', :to => 'Admin/StaticPages#create'

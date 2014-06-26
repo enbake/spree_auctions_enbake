@@ -49,8 +49,14 @@ module Spree
     end
 
     def auctions
-      @orders =  Spree::Order.joins(line_items: [variant: [:product]]).where("available_on < ? and auction_end > ? and state not IN (?) and user_id = ? ", Date.today, Date.today, ["cart", "confirm"], spree_current_user.id).order("created_at Desc")
-      @order_history = Spree::Order.joins(line_items: [variant: [:product]]).where("available_on < ? and auction_end < ? and state not IN (?) and user_id = ? ", Date.today, Date.today, ["cart", "confirm"], spree_current_user.id).order("created_at Desc")
+      @orders =  Spree::Order.joins(line_items: [variant: [:product]]).where("available_on <= ? and auction_end > ? and state not IN (?) and user_id = ? ", Date.today, Date.today, ["cart", "confirm"], spree_current_user.id).order("created_at Desc")
+      @order_history = Spree::Order.joins(line_items: [variant: [:product]]).where("available_on <= ? and auction_end < ? and state not IN (?) and user_id = ? ", Date.today, Date.today, ["cart", "confirm"], spree_current_user.id).order("created_at Desc")
     end
+    
+    def catalog
+      @searcher = build_searcher(params)
+      @products = @searcher.retrieve_products.where("auction_end >= ?", Date.today).order("created_at DESC")
+    end
+    
   end
 end
