@@ -17,5 +17,16 @@ module Spree
 
       link_to text, spree.cart_path, :class => "cart-info #{css_class}"
     end
+    
+    def min_bid_hike(current_price)
+      if current_price > 0 && current_price <= 1000
+        min_hike = 50
+      elsif current_price > 1000 && current_price <= 5000
+        min_hike = 100
+      else
+        min_hike = 1000
+      end
+      return min_hike
+    end
   end
 end
