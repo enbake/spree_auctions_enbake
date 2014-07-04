@@ -20,6 +20,7 @@ Spree::Core::Engine.routes.draw do
         resources :static_pages
         resources :categories
         resources :author_bios
+         resources :navigations
       end
       
       resources :view_categories
