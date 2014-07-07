@@ -24,5 +24,8 @@ Spree::Core::Engine.routes.draw do
       end
       
       resources :view_categories
+      resources :follows do
+        get :follow_product, on: :collection
+      end
 	end
 end
