@@ -8,5 +8,8 @@ Deface::Override.new(
           <% end %></div>
           <div id="dialog" title="Warning" style="display:none">
             <p>Your bid must be greater than the Minimun Bid</p>
+         </div>
+         <div id="biddialog" title="Warning" style="display:none">
+            <p>Your bid must be greater than the Last Bid</p>
          </div>', 
     :name => "bid_price")
