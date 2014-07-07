@@ -4,6 +4,7 @@ module Spree
     has_and_belongs_to_many :categories, :class_name => "Spree::Category", :join_table => "products_categories"
     has_many :photos, as: :imageable, :class_name => "Spree::Photo", :dependent => :destroy
     belongs_to :author_bio, :class_name => "Spree::AuthorBio"
+    has_many :followers, :class_name => "Spree::Follower"
 
     attr_accessor :categories_id, :action
     attr_accessible :bid_price

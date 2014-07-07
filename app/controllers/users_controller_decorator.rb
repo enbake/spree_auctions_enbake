@@ -22,9 +22,9 @@ module Spree
             sign_in(@user, :event => :authentication, :bypass => !Spree::Auth::Config[:signout_after_password_change])
           end
           flash.now[:success] = Spree.t(:account_updated)
-          render :edit
+          redirect_to "/profile", :notice => Spree.t(:account_updated)
         else
-          render :edit
+          redirect_to "/profile", :notice => @user.errors.full_messages.join(", ")
         end
       end
     end
