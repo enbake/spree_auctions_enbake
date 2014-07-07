@@ -1,0 +1,39 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:listing_navigations) %>
+<%end%>
+
+<% content_for :page_actions do %>
+  <li id="new_navigation_link">
+  <%= button_link_to Spree.t(:new_navigation), new_admin_navigation_path, {:icon => 'icon-plus', :id => 'new_admin_navigation' } %>
+  </li>
+<%end%> 
+
+<% if @navigation.any? %>
+  <table class="index" id="listing_navigations">
+  	<thead>
+  		<tr data-hook="navigation_index_headers">
+  			<th><%= Spree.t(:name) %></th>
+  			<th><%= Spree.t(:url) %></th>
+  			<th data-hook="navigation_index_headers" class="actions"></th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<% @navigation.each do |nav|%>
+  		  <tr data-hook="admin_navigation_index_rows" class="each_navigation">
+  		  	<td class="align-center"><%= Spree.t(nav.name) %></td>
+  		  	<td class="align-center"><%= Spree.t(nav.url) %></td>
+  		  	<td class="actions" data-hook="navigation_index_row_actions_edit">
+              <a href="<%=edit_admin_navigation_path(nav)%>" class="edit icon_link with-tip icon-edit no-text"></a>
+            </td>
+            <td class="actions" data-hook="navigation_index_row_actions">
+              <a href="<%=admin_navigation_path(nav)%>" class="delete-resource icon_link with-tip icon-trash no-text" data-method="delete" data-action="destroy" data-confirm="Are you sure?"></a>
+            </td>
+         <% end %>
+           </tr>
+  	</tbody>
+  </table>
+<% else %>
+  <div class="no-object-found">
+  	<%= Spree.t(:no_results) %>
+  </div>
+<%end%>

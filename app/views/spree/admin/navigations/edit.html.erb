@@ -1,0 +1,32 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:editing_navigation) %>
+<% end %>
+
+<%= form_for [:admin, @navigation], :method => :put do |f| %>
+  <fieldset class="no-border-top">
+    <table class = "no_border">
+    <tr class="no_border">
+        <td class="no_border">
+            <%= f.label :name %>
+        </td>
+        <td class="no_border">
+            <%= f.text_field :name %>
+        </td>
+    </tr>
+    <tr class="no_border">
+    	<td class="no_border">
+        	<%= f.label :url %>
+        </td>
+        <td class="no_border">
+            <%= f.select :url, Spree::Navigation.all.collect{|p| [p.url, p.url]}, include_blank: "None" %>
+        </td>
+    </tr>
+    <tr>
+    	<td class="no_border"></td>
+        <td class="no_border" colspan= "2" style="float:right;">
+            <%= f.submit 'Update' %>
+        </td>
+    </tr>
+</table>
+  </fieldset>
+<% end %>
