@@ -14,6 +14,8 @@ Spree::Core::Engine.routes.draw do
       match "profile" => "users#profile"
       match "auctions" => "users#auctions"
       match "catalog" => "users#catalog"
+      get "add_credit_card" => "users#add_credit_card", :as => "add_credit_card"
+      get "credit_card_info" => "users#credit_card_info", :as => "credit_card_info"
 #      get '/static_pages/index', :to => 'Admin/StaticPages#index'
 #      get '/static_pages/new', :to => 'Admin/StaticPages#new' 
 #      #post '/', :to => 'Admin/StaticPages#create'

@@ -29,7 +29,7 @@ module Spree
 
   def after_confirmation_path_for(resource_name, resource)
     if signed_in?
-      signed_in_root_path(resource)
+      add_credit_card_path
     else
       login_path
     end
