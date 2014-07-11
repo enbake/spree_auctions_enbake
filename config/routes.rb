@@ -22,6 +22,8 @@ Spree::Core::Engine.routes.draw do
         resources :categories
         resources :author_bios
          resources :navigations
+        resources :custom_email_contents
+         
       end
       
       resources :view_categories

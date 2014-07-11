@@ -1,0 +1,38 @@
+<%= form_for [:admin, @email_content] do |f| %>
+<table class="no-border">
+    <tr class="no=border">
+        <td class="no-border">
+            <%= f.label :type %>
+        </td>
+        <td class="no-border">
+            <%= f.select :language, options_for_select(["en", "pl"],:selected => f.object.language) %>
+        </td>
+    </tr>
+    <tr class="no=border">
+        <td class="no-border">
+            <%= f.label :name %>
+        </td>
+        <td class="no-border">
+            <%= f.text_field :name %>
+        </td>
+    </tr>
+    <tr class="no=border">
+        <td class="no-border">
+            <%= f.label :body %>
+        </td>
+        <td class="no-border taget">
+            <%= f.text_area :body, :id => "email_content" %>
+            <p>User Email: #user_email</p>
+            <p>Confirm Account Link on signup: #confirm_account_link</p>
+            <p>Order Number: #order_number</p>
+        </td>
+        
+    </tr>
+     <tr>
+        <td class="no_border"></td>
+        <td class="no_border" colspan= "2" style="float:right;">
+            <%= f.submit 'Save' %>
+        </td>
+    </tr>
+ </table>
+<% end %>
