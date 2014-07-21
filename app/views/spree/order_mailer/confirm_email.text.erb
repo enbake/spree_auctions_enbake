@@ -1,5 +1,12 @@
-<%= Spree.t('order_mailer.confirm_email.dear_customer') %>
+<%if Spree::CustomEmailContent.where("lower(name) = ?", 'confirm_email').first.nil? %>
+    <%= Spree.t('order_mailer.confirm_email.dear_customer') %>
+    
+    <%= Spree.t('order_mailer.confirm_email.bid_place_message') %>
+    
+    <%= Spree.t('order_mailer.confirm_email.thanks') %>
+<%else%>
+    <% @content = raw Spree::CustomEmailContent.where("lower(name) = ?", 'confirm_email').first.body%>
+    <%= @content.html_safe%>
+<%end%>
 
-<%= Spree.t('order_mailer.confirm_email.bid_place_message') %>
 
-<%= Spree.t('order_mailer.confirm_email.thanks') %>
