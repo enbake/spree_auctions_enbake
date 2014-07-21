@@ -13,47 +13,47 @@
   <% if Spree::Config[:company] and user_address.company%>
     <p class="field" id=<%="#{address_id}company" %>>
       <%= form.label :company, Spree.t(:company) %><br />
-      <%= form.text_field :company, :class => ' user_address_form', :value => user_address.company_name, :readonly => "readonly", :disabled => "disabled"%>
+      <%= form.text_field :company, :class => ' user_address_form', :value => user_address.try(:company_name), :readonly => "readonly", :disabled => "disabled"%>
     </p>
   <% end %>
   <p class="field" id=<%="#{address_id}address1" %>>
     <%= form.label :address1, Spree.t(:street_address) %><span class="required">*</span><br />
-    <%= form.text_field :address1, :class => 'required user_address_form', :value => user_address.street_no, :readonly => "readonly", :disabled => "disabled" %>
+    <%= form.text_field :address1, :class => 'user_address_form', :value => user_address.try(:street_no), :readonly => "readonly", :disabled => "disabled" %>
   </p>
   <p class="field" id=<%="#{address_id}address2" %>>
     <%= form.label :address2, Spree.t(:street_address_2) %><br />
-    <%= form.text_field :address2, :class => 'user_address_form', :value => user_address.apartment_no, :readonly => "readonly", :disabled => "disabled" %>
+    <%= form.text_field :address2, :class => 'user_address_form', :value => user_address.try(:apartment_no), :readonly => "readonly", :disabled => "disabled" %>
   </p>
   <p class="field" id=<%="#{address_id}city" %>>
     <%= form.label :city, Spree.t(:city) %><span class="required">*</span><br />
-    <%= form.text_field :city, :class => 'required user_address_form', :value => user_address.city, :readonly => "readonly", :disabled => "disabled" %>
+    <%= form.text_field :city, :class => 'required user_address_form', :value => user_address.try(:city), :readonly => "readonly", :disabled => "disabled" %>
   </p>
   <p class="field" id=<%="#{address_id}country" %>>
     <%= form.label :country_id, Spree.t(:country) %><span class="required">*</span><br />
     <span id=<%="#{address_id}country-selection" %>>
-      <%= form.collection_select :country_id, available_countries, :id, :name, {:selected => user_address.country}, {:class => 'required user_address_form', :readonly => "readonly", :disabled => "disabled"} %>
+      <%= form.collection_select :country_id, available_countries, :id, :name, {:selected => user_address.try(:country)}, {:class => 'required user_address_form', :readonly => "readonly", :disabled => "disabled"} %>
     </span>
   </p>
 
   <% if Spree::Config[:address_requires_state] %>
     <p class="field" id=<%="#{address_id}state" %>>
       <%= form.label :state, Spree.t(:state) %><span class='required'>*</span><br/>
-      <%= form.text_field :state_name, :class => 'required user_address_form', :value => user_address.state, :readonly => "readonly", :disabled => "disabled" %>
+      <%= form.text_field :state_name, :class => 'required user_address_form', :value => user_address.try(:state), :readonly => "readonly", :disabled => "disabled" %>
     </p>
   <% end %>
 
   <p class="field" id=<%="#{address_id}zipcode" %>>
     <%= form.label :zipcode, Spree.t(:zip) %><span class="required">*</span><br />
-    <%= form.text_field :zipcode, :class => 'required user_address_form', :value => user_address.zip_code, :readonly => "readonly", :disabled => "disabled" %>
+    <%= form.text_field :zipcode, :class => 'required user_address_form', :value => user_address.try(:zip_code), :readonly => "readonly", :disabled => "disabled" %>
   </p>
   <p class="field" id=<%="#{address_id}phone" %>>
     <%= form.label :phone, Spree.t(:phone) %><span class="required">*</span><br />
-    <%= form.phone_field :phone, :class => 'required user_address_form', :value => user_address.mobile_no, :readonly => "readonly", :disabled => "disabled" %>
+    <%= form.phone_field :phone, :class => 'required user_address_form', :value => user_address.try(:mobile_no), :readonly => "readonly", :disabled => "disabled" %>
   </p>
   <% if Spree::Config[:alternative_shipping_phone] %>
     <p class="field" id=<%="#{address_id}altphone" %>>
       <%= form.label :alternative_phone, Spree.t(:alternative_phone) %><br />
-      <%= form.phone_field :alternative_phone, :class => 'user_address_form', :value => user_address.land_line_no, :readonly => "readonly", :disabled => "disabled" %>
+      <%= form.phone_field :alternative_phone, :class => 'user_address_form', :value => user_address.try(:land_line_no), :readonly => "readonly", :disabled => "disabled" %>
     </p>
   <% end %>
 </div>
