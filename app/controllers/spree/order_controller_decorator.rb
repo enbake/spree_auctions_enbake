@@ -1,7 +1,9 @@
 module Spree
   OrdersController.class_eval do
    def populate
-     current_order.line_items.delete_all
+     if current_order.present?
+       current_order.line_items.delete_all
+     end
       populator = Spree::OrderPopulator.new(current_order(true), current_currency)
       @prodval= JSON.parse params[:products]
        params.delete :products
