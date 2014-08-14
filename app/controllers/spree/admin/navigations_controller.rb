@@ -7,6 +7,7 @@ class Spree::Admin::NavigationsController < Spree::Admin::BaseController
   end
   
   def create
+    params[:navigation][:url] =  params[:navigation][:url].split("//").last
     Spree::Navigation.create!(params[:navigation])
     flash[:notice] = "Navigation created successfully"
     redirect_to admin_navigations_path

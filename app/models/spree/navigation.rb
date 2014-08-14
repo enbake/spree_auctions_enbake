@@ -1,3 +1,3 @@
 class Spree::Navigation < ActiveRecord::Base
-  attr_accessible :name, :url, :private
+  attr_accessible :name, :url, :private, :custom_url
 end

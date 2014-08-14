@@ -7,7 +7,7 @@
 			<%= f.label :name %>
 		</td>
 		<td class="no-border">
-			<%= f.text_field :name %>
+			<%= f.text_field :name, required:true %>
 		</td>
 	</tr>
 	
@@ -19,6 +19,8 @@
 			<%= f.select :url, navigation, include_blank: "None" %>
 			<br>
 			<%= f.text_field :url, :id => "other_url", :style => "display: none; width: 50%; margin-top: 10px;"%>
+		    <%= f.hidden_field :custom_url, :id => "custom_url_field"%>
+		
 		</td>
 		
 	</tr>
@@ -35,10 +37,14 @@
     if ($(this).val() == "other"){
         $("#other_url").show();
         $("#other_url").prop("disabled", false);
+        $("#custom_url_field").attr('value', true);
     }
     else{
         $("#other_url").hide();
         $("#other_url").prop("disabled", true);
+        $("#custom_url_field").attr('value', false);
     }
 });
 </script>
+
+
