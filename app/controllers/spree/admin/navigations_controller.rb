@@ -8,6 +8,12 @@ class Spree::Admin::NavigationsController < Spree::Admin::BaseController
   
   def create
     Spree::Navigation.create!(params[:navigation])
+    params[:navigation][:url] =  params[:navigation][:url].split("//").last
+    navigation = Spree::Navigation.create!(params[:navigation])
+    if params[:lang] == "pl"
+      navigation.translations.where(locale: "en").first.update_attribute('name', "") if navigation.translations.where(locale: "en").first
+      translation =  navigation.translations.create(locale: params[:lang], name: params[:navigation][:name])
+    end
     flash[:notice] = "Navigation created successfully"
     redirect_to admin_navigations_path
   end
@@ -28,8 +34,13 @@ class Spree::Admin::NavigationsController < Spree::Admin::BaseController
   end
   
   def update
-       @navigation = Spree::Navigation.find params[:id]
+    @navigation = Spree::Navigation.find params[:id]
     if @navigation.update_attributes(params[:navigation])
+      if params[:lang] == 'pl'
+        translation =  @navigation.translations.find_or_initialize_by_locale(params[:lang])
+        @navigation.translations.where(locale: "en").first.update_attribute('name', params[:english])
+        translation.update_attributes(:name => params[:navigation][:name])
+      end
       flash[:notice] = "Navigation updated successfully"
     else
       flash[:error] = "Error occured in updating bio"

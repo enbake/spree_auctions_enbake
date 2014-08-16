@@ -20,7 +20,7 @@
   	<tbody>
   		<% @navigation.each do |nav|%>
   		  <tr data-hook="admin_navigation_index_rows" class="each_navigation">
-  		  	<td class="align-center"><%= Spree.t(nav.name) %></td>
+  		  	<td class="align-center"><%= Spree.t(nav_name nav) %></td>
   		  	<td class="align-center"><%= Spree.t(nav.url) %></td>
   		  	<td class="actions" data-hook="navigation_index_row_actions_edit">
               <a href="<%=edit_admin_navigation_path(nav)%>" class="edit icon_link with-tip icon-edit no-text"></a>

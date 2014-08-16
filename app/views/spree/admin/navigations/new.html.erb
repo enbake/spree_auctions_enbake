@@ -1,4 +1,5 @@
 <%= form_for [:admin, @navigation] do |f| %>
+<%= select_tag "lang", options_for_select(["en", "pl"])%>
 <table class="no-border">
 	<tr class="no=border">
 		<td class="no-border">
