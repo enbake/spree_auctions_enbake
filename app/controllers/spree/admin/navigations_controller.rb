@@ -7,7 +7,6 @@ class Spree::Admin::NavigationsController < Spree::Admin::BaseController
   end
   
   def create
-    Spree::Navigation.create!(params[:navigation])
     params[:navigation][:url] =  params[:navigation][:url].split("//").last
     navigation = Spree::Navigation.create!(params[:navigation])
     if params[:lang] == "pl"
