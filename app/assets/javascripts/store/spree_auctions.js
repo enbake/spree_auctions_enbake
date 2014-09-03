@@ -1,12 +1,17 @@
 //= require store/spree_frontend
 
 $('#add-to-cart-button').live('click', function(){
-	var min_bid = $('#bd_pz').text().trim().slice(2)
+	var min_bid = $('#bd_pz').text().trim().slice(2).replace(',', "")
 	var user_bid = $('#bid_price').val().trim()
 	var next_bid = parseFloat($('#max-bid-price').attr('value'))
 	var hike = parseFloat($('#min-bid-hike').attr('value'))
-	$("#biddialog p").html('Your bid must be greater than by '+hike+' from last bid')
-	if((parseFloat(user_bid) <= parseFloat(min_bid)) || user_bid == ""){
+	if ($("#last_bid_present").val() == "true"){
+	  $("#biddialog p").html('Your bid must be greater than by '+hike+' from last bid')
+	  }
+	else{
+	    $("#biddialog p").html('Your bid must be '+hike+' greater than the minimum bid ')
+	  }
+	if((parseFloat(user_bid) < parseFloat(min_bid)) || user_bid == ""){
 		$("#dialog").dialog({autoclose: false});
 		return false;
 	}
@@ -14,7 +19,7 @@ $('#add-to-cart-button').live('click', function(){
         $("#biddialog").dialog({autoclose: false});
         return false;
     }
-});
+})
 
 $(document).ready(function() {
 	$(".is-company").click( function(){
