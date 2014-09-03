@@ -5,7 +5,9 @@
     <p><%= link_to 'Confirm my account', spree.spree_user_confirmation_url( :confirmation_token => @resource.confirmation_token) %></p>
 
 <%else%>
-    <% @content = raw Spree::CustomEmailContent.where("lower(name) = ?", 'confirmation_instructions').first.body%>
+    <% body = Spree::CustomEmailContent.where("lower(name) = ?", 'confirmation_instructions').first.body%>
+    <% content = body[I18n.locale] || body.values.first || "" %>
+    <% @content = raw content %>
     <% @content = @content.gsub('#user_email', @email).gsub('#confirm_account_link',(link_to 'Confirm my account', spree.spree_user_confirmation_url( :confirmation_token => @resource.confirmation_token))) %>
     <%= @content.html_safe%>
 <%end%>

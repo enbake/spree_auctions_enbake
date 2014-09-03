@@ -1,17 +1,45 @@
-<p><%= Spree.t('order_mailer.confirm_email.dear_customer') %></p>
+<%if Spree::CustomEmailContent.where("lower(name) = ?", 'bid_accepted').first.nil? %>
 
-<p><%= Spree.t('order_mailer.confirm_email.bid_accepted') %></p>
-<p><%= Spree.t('order_mailer.confirm_email.bid_order_no') %> <%=@order.number%></p>
-
-<p><%= "#{Spree.t('order_mailer.confirm_email.bid_payment_message')} " "#{AppConfig.paypal['id']}" %></p>
-<p><%= Spree.t('order_mailer.confirm_email.make_payment') %></p>
-
-<p><%= Spree.t('order_mailer.confirm_email.bid_address') %></p>
-<p><%= @order.ship_address.firstname %><%= @order.ship_address.lastname %></p>
-<p><%= @order.ship_address.address1 %></p>
-<p><%= @order.ship_address.address2 %></p>
-<p><%= @order.ship_address.city %></p>
-<p><%= @order.ship_address.state_name %></p>
-<p><%= @order.ship_address.phone %></p>
-
-<p><%= Spree.t('order_mailer.confirm_email.thanks') %></p>
+  <p><%= Spree.t('order_mailer.confirm_email.dear_customer') %></p>
+  
+  <p><%= Spree.t('order_mailer.confirm_email.bid_accepted') %></p>
+  <p><%= Spree.t('order_mailer.confirm_email.bid_order_no') %> <%=@order.number%></p>
+  
+  <p><%= "#{Spree.t('order_mailer.confirm_email.bid_payment_message')} " "#{AppConfig.paypal['id']}" %></p>
+  <p><%= Spree.t('order_mailer.confirm_email.make_payment') %></p>
+  
+  <p><%= Spree.t('order_mailer.confirm_email.bid_address') %></p>
+  <p><%= @order.ship_address.firstname %><%= @order.ship_address.lastname %></p>
+  <p><%= @order.ship_address.address1 %></p>
+  <p><%= @order.ship_address.address2 %></p>
+  <p><%= @order.ship_address.city %></p>
+  <p><%= @order.ship_address.state_name %></p>
+  <p><%= @order.ship_address.phone %></p>
+  
+  <p><%= Spree.t('order_mailer.confirm_email.thanks') %></p>
+<% else %>
+  <% body = Spree::CustomEmailContent.where("lower(name) = ?", 'bid_accepted').first.body%>
+  <% content = body[I18n.locale] || body.values.first || "" %>
+  <% @content = raw content%>
+  <% ['#order_number', '#order_firstname', '#order_lastname', "#order_address1", "#order_address2", "#order_city", '#order_state', "#order_phone"].each do |code| %>
+    <% case code %>
+      <% when "#order_number" %>
+        <% @content.gsub(code, @order.number) %>
+      <% when "#order_firstname" %>
+        <% @content.gsub(code, @order.ship_address.firstname) %>
+      <% when "#order_lastname" %>
+        <% @content.gsub(code, @order.ship_address.lastname) %>
+      <% when "#order_address1" %>
+        <% @content.gsub(code, @order.ship_address.address1) %>
+      <% when "#order_address2" %>
+        <% @content.gsub(code, @order.ship_address.address2) %>
+      <% when "#order_city" %>
+        <% @content.gsub(code, @order.ship_address.city) %>
+      <% when "#order_state" %>
+        <% @content.gsub(code, @order.ship_address.state_name) %>
+      <% when "#order_phone" %>
+        <% @content.gsub(code, @order.ship_address.phone) %>
+    <% end%>
+  <% end %>
+  <%= @content.html_safe%>
+<% end %>

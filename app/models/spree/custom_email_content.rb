@@ -1,4 +1,6 @@
 class Spree::CustomEmailContent < ActiveRecord::Base
    attr_accessible :name, :body, :language
-   validates :name, uniqueness: { scope: :language, :case_sensitive => false }
+   validates_uniqueness_of :name
+   
+   serialize :body, Hash
 end

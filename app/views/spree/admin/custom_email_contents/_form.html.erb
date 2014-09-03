@@ -5,7 +5,7 @@
             <%= f.label :type %>
         </td>
         <td class="no-border">
-            <%= f.select :language, options_for_select(["en", "pl"],:selected => f.object.language) %>
+            <%= f.select :language, options_for_select([["en", :body => @email_content.body[:en]], ["pl", :body => @email_content.body[:pl]]],:selected => f.object.language) %>
         </td>
     </tr>
     <tr class="no=border">
@@ -13,7 +13,7 @@
             <%= f.label :name %>
         </td>
         <td class="no-border">
-            <%= f.text_field :name %>
+            <%= f.select :name, options_for_select([["Account Confirmation Instructions", "confirmation_instructions"], ["Bid Accepted Email", "bid_accepted"], ["Order Confirmation Email", "confirm_email"]]) %>
         </td>
     </tr>
     <tr class="no=border">
@@ -21,10 +21,37 @@
             <%= f.label :body %>
         </td>
         <td class="no-border taget">
-            <%= f.text_area :body, :id => "email_content" %>
-            <p>User Email: #user_email</p>
-            <p>Confirm Account Link on signup: #confirm_account_link</p>
-            <p>Order Number: #order_number</p>
+            <%= f.text_area :body, :id => "email_content", value: @email_content.body[I18n.locale].present? ? @email_content.body[I18n.locale] : "" %>
+            <p></p>Use the following short codes in the text to set their values accordingly:</p> 
+            <div id="confirmation_instructions" class="short_codes">
+              <p>User Email: #user_email</p>
+              <p>Confirm Account Link on signup: #confirm_account_link</p>
+            </div>
+            <div id="confirm_email" class="short_codes" style="display: none;">
+              n/a
+            </div>
+            <div id="bid_accepted" class="short_codes" style="display: none;">
+              <% ['#order_number', '#order_firstname', '#order_lastname', "#order_address1", "#order_address2", "#order_city", '#order_state', "#order_phone"].each do |code| %>
+                <% case code %>
+                  <% when "#order_number" %>
+                    <p> Order Number: <%=code%></p>
+                  <% when "#order_firstname" %>
+                    <p> First Name: <%=code%></p>
+                  <% when "#order_lastname" %>
+                    <p> Last Name: <%=code%></p>
+                  <% when "#order_address1" %>
+                    <p> Address 1: <%=code%></p>
+                  <% when "#order_address2" %>
+                    <p> Address 2: <%=code%></p>
+                  <% when "#order_city" %>
+                    <p> City: <%=code%></p>
+                  <% when "#order_state" %>
+                    <p> State: <%=code%></p>
+                  <% when "#order_phone" %>
+                    <p> Phone: <%=code%></p>
+                <% end%>
+              <% end %>
+            </div>
         </td>
         
     </tr>
@@ -36,3 +63,15 @@
     </tr>
  </table>
 <% end %>
+
+<script>
+  $('#custom_email_content_language').change(function(e){
+    selected = $('#custom_email_content_language :selected');
+    $('#email_content').attr('value', selected.attr('body'));
+  });
+  $("#custom_email_content_name").change(function(e){
+    id = "#" + $(this).val();
+    $(".short_codes").hide();
+    $(id).show();
+  });
+</script>
