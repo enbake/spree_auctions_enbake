@@ -24,21 +24,21 @@
   <% ['#order_number', '#order_firstname', '#order_lastname', "#order_address1", "#order_address2", "#order_city", '#order_state', "#order_phone"].each do |code| %>
     <% case code %>
       <% when "#order_number" %>
-        <% @content.gsub(code, @order.number) %>
+        <% @content.gsub!(code, @order.number) %>
       <% when "#order_firstname" %>
-        <% @content.gsub(code, @order.ship_address.firstname) %>
+        <% @content.gsub!(code, @order.ship_address.firstname) %>
       <% when "#order_lastname" %>
-        <% @content.gsub(code, @order.ship_address.lastname) %>
+        <% @content.gsub!(code, @order.ship_address.lastname) %>
       <% when "#order_address1" %>
-        <% @content.gsub(code, @order.ship_address.address1) %>
+        <% @content.gsub!(code, @order.ship_address.address1) %>
       <% when "#order_address2" %>
-        <% @content.gsub(code, @order.ship_address.address2) %>
+        <% @content.gsub!(code, @order.ship_address.address2) %>
       <% when "#order_city" %>
-        <% @content.gsub(code, @order.ship_address.city) %>
+        <% @content.gsub!(code, @order.ship_address.city) %>
       <% when "#order_state" %>
-        <% @content.gsub(code, @order.ship_address.state_name) %>
+        <% @content.gsub!(code, @order.ship_address.state_name) %>
       <% when "#order_phone" %>
-        <% @content.gsub(code, @order.ship_address.phone) %>
+        <% @content.gsub!(code, @order.ship_address.phone) %>
     <% end%>
   <% end %>
   <%= @content.html_safe%>
