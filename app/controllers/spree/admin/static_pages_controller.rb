@@ -10,7 +10,7 @@ class Spree::Admin::StaticPagesController < Spree::Admin::BaseController
   end
 
   def create 
-    StaticContentPage.create!(params[:static_page])
+    StaticContentPage.create!(params[:static_content_page])
     flash[:notice] = "Topic successfully created"
     redirect_to '/admin'
   end
