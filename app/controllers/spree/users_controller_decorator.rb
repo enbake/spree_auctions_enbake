@@ -104,7 +104,7 @@ module Spree
     end
     
     def faq
-      @data =StaticPage.all
+      @data =StaticContentPage.all
     end
     
   end
