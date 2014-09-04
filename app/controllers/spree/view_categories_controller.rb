@@ -1,4 +1,5 @@
-class Spree::ViewCategoriesController < ApplicationController
+class Spree::ViewCategoriesController < Spree::StoreController
+
 
   def show
     category = Spree::Category.find(params[:id])
