@@ -61,7 +61,7 @@ Deface::Override.new(
             <div class='sidebar_header'><h4>FAQ</h4></div>
             <ul class='sidebar_menu'> 
               <% StaticPage.all.each_with_index do |sp, count|%>
-                <li><%= link_to sp.title, admin_static_pages_path(anchor: 'static_question_' + (count+1).to_s)%></li>
+                <li><%= link_to sp.title, faq_path(anchor: 'static_question_' + (count+1).to_s)%></li>
               <% end %>
             </ul>
           </div>

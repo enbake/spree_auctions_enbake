@@ -100,7 +100,11 @@ module Spree
     
     def catalog
       @searcher = build_searcher(params)
-      @products = @searcher.retrieve_products.where("auction_end >= ?", Date.today).order("created_at DESC")
+      @products = @searcher.retrieve_products.where("available_on <= ? and auction_end >= ? ", Date.today, Date.today).order("created_at DESC")
+    end
+    
+    def faq
+      @data =StaticPage.all
     end
     
   end

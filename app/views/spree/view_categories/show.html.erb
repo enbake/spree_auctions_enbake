@@ -1,25 +1,44 @@
+<%= render :partial => 'spree/shared/main_nav_bar.html.erb' %>
 <%= content_tag :div do%>
-<div id="showcase">
-    <div class="features_op1_row">
-        <ul class="thumbnails" data-hook>
+  <div class='span-12'>
+    <div class='span2'>
+      <%= link_to 'Do Katalogu', spree.root_path ,:class =>'btn btn-primary btn-block'%>
+      <hr>
+      <div class='sidebar' style='float: none;'>
+        <div class='sidebar_header'><h4>Kategorie</h4></div>
+        <ul class='sidebar_menu'>
+          <% Spree::Category.all.each do |category| %>
+            <li><%= link_to category.name, view_category_path(category) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class='span9'>
+      <div id="showcase">
+        <div class="features_op1_row">
+          <ul class="thumbnails" data-hook>
             <% @products.each do |product| %>
-            <li class="span3 feature" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+              <li class="span3 feature" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
                 <div class="img_box">
-                    <a href="<%= url_for product %>"><% unless product.images.empty? %>
-                        <%= image_tag(product.images.first.attachment.url) %>
-                        <% end %>
-                        <span class="circle"><span class="plus">+</span></span></a>
+                  <a href="<%= url_for product %>">
+                    <% unless product.images.empty? %>
+                      <%= image_tag(product.images.first.attachment.url) %>
+                    <% end %>
+                    <span class="circle"><span class="plus">+</span></span>
+                  </a>
                 </div>
                 <div class="text">
-                    <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
-                    <div class="price selling" itemprop="price">
-                        <%= display_price(product) %>
-                    </div>
+                  <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
+                  <div class="price selling" itemprop="price">
+                    <%= display_price(product) %>
+                  </div>
                 </div>
-            </li>
+              </li>
             <% end %>
             <% reset_cycle("classes") %>
-        </ul>
+          </ul>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 <% end %>
