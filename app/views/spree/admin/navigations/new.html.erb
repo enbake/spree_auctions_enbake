@@ -1,3 +1,5 @@
+<%navigation = Spree::Navigation.all.collect{|p| [p.url, p.url]}%>
+<%navigation << ["other"]%>
 <%= form_for [:admin, @navigation] do |f| %>
 <%= select_tag "lang", options_for_select(["en", "pl"])%>
 <table class="no-border">
@@ -9,13 +11,17 @@
 			<%= f.text_field :name %>
 		</td>
 	</tr>
-	<tr class="no=border">
+	
+	<tr class="no=border" style="border-right: 1px solid #cee1f4;" >
 		<td class="no-border">
 			<%= f.label :url %>
 		</td>
 		<td class="no-border">
-			<%= f.select :url, Spree::Navigation.all.collect{|p| [p.url, p.url]}, include_blank: "None" %>
+			<%= f.select :url, navigation, include_blank: "None" %>
+			<br>
+			<%= f.text_field :url, :id => "other_url", :style => "display: none; width: 50%; margin-top: 10px;"%>
 		</td>
+		
 	</tr>
 	 <tr>
     	<td class="no_border"></td>
@@ -25,3 +31,17 @@
     </tr>
  </table>
 <% end %>
+
+
+<script>
+  $(document).on("change", "#navigation_url", function(){
+    if ($(this).val() == "other"){
+        $("#other_url").show();
+        $("#other_url").prop("disabled", false);
+    }
+    else{
+        $("#other_url").hide();
+        $("#other_url").prop("disabled", true);
+    }
+});
+</script>
