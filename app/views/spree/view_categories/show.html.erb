@@ -14,6 +14,12 @@
       </div>
     </div>
     <div class='span9'>
+       <div class="section_header">
+         <h3><%= @category.name %></h3>
+       </div>
+       <% if @products.empty? %>
+            <%= Spree.t(:no_products_found) %>
+       <% end %>
       <div id="showcase">
         <div class="features_op1_row">
           <ul class="thumbnails" data-hook>

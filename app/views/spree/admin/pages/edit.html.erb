@@ -1,0 +1,33 @@
+<% content_for :page_title do %>
+   <%= Spree.t("static_content.static_pages") %> <i class="icon-arrow-right"></i> <%= Spree.t("static_content.editing_page") %> "<%= @page.title%>"
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t(:back_to_static_pages_list), spree.admin_pages_url, :icon => 'icon-arrow-left' %></li>
+<% end %>
+
+<%= render "spree/shared/error_messages", :target => @page %>
+<% translations = @page.translations %>
+   <% eng = translations.where(locale: "en").first %>
+   <% pol = translations.where(locale: "pl").first %>
+   <% eng_title, eng_body = eng.try(:title), raw(eng.try(:body)) %>
+   <% pol_title, pol_body = pol.try(:title), raw(pol.try(:body)) %>
+    <%= form_for [:admin, @page] do |f| %>
+       <%= select_tag "lang", options_for_select([["en", :lang => [eng_title, eng_body]], ["pl", :lang => [pol_title, pol_body]] ]), id: "lang_dropdn" %>
+      <fieldset class="no-border-top">
+        <%= render :partial => 'form', :locals => { :f => f } %>
+        <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+      </fieldset>
+    <% end %>
+
+
+<script>
+  $("#lang_dropdn").change(function(e){
+    selected = $("#lang_dropdn :selected");
+    lang = JSON.parse(selected.attr('lang'));
+    $("#page_title").attr('value', lang[0]);
+    tinyMCE.activeEditor.setContent(lang[1]);
+  })
+  
+    
+</script>

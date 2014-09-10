@@ -1,4 +1,5 @@
 <%navigation = Spree::Navigation.all.collect{|p| [p.url, p.url]}%>
+<%navigation <<  Spree::Page.all.map(&:slug) %>
 <%navigation << ["other"]%>
 <%= form_for [:admin, @navigation] do |f| %>
 <%= select_tag "lang", options_for_select(["en", "pl"])%>
@@ -17,7 +18,7 @@
 			<%= f.label :url %>
 		</td>
 		<td class="no-border">
-			<%= f.select :url, navigation, include_blank: "None" %>
+			<%= f.select :url, navigation.flatten.uniq, include_blank: "None" %>
 			<br>
 			<%= f.text_field :url, :id => "other_url", :style => "display: none; width: 50%; margin-top: 10px;"%>
 		</td>
