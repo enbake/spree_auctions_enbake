@@ -5,7 +5,7 @@ Spree::Admin::PagesController.class_eval do
     @object.attributes = params[object_name]
     if @object.save
         invoke_callbacks(:create, :after)
-        if params[:lang] = "pl"
+        if params[:lang] == "pl"
            @object.translations.where(locale: "en").first.update_attributes(:title => "", :body => "") if @object.translations.where(locale: "en").first
            translation =  @object.translations.create(locale: params[:lang], title: params[:page][:title], body: params[:page][:body])
         end
