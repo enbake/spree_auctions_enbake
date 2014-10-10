@@ -1,6 +1,8 @@
 class Spree::Navigation < ActiveRecord::Base
-  attr_accessible :name, :url, :private, :custom_url
+  attr_accessible :name, :url, :private, :custom_url ,:position
   translates :name
+
+  before_create :set_position
 
   def duplicate
     p = self.dup
@@ -39,6 +41,10 @@ class Spree::Navigation < ActiveRecord::Base
     end
 
     self_scope.where([where_str, values.map { |value| "%#{value}%" } * fields.size].flatten)
+  end
+
+  def set_position
+    self.position = Spree::Navigation.all.map(&:position).max + 1
   end
  
 end

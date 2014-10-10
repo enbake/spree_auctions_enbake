@@ -4,7 +4,7 @@ Deface::Override.new(
     :text => '<div class="nav-collapse collapse ">
              <%= link_to "AuctionHouse", spree.root_path, :class => "brand" %>
              <ul class="nav pull-right ">
-               <%Spree::Navigation.all.each do |nav|%>
+               <%Spree::Navigation.order("position").each do |nav|%>
                 <% unless ((nav.url == "/auctions" or nav.url == "/payment" or nav.url == "/profile") and !spree_current_user) %>
                   <li><%= link_to nav.name, nav.url %></li> 
                 <%end%>

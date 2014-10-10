@@ -24,6 +24,16 @@
             <%= f.select :url, Spree::Navigation.all.collect{|p| [p.url, p.url]}, include_blank: "None" %>
         </td>
     </tr>
+
+      <tr class="no_border">
+        <td class="no_border">
+          <%= f.label :position %>
+        </td>
+        <td class="no_border">
+          <%= f.text_field :position , :value=> @navigation.position %>
+        </td>
+      </tr>
+
     <tr>
         <td class="no_border"></td>
         <td class="no_border" colspan= "2" style="float:right;">

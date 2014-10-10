@@ -1,6 +1,6 @@
 class Spree::Admin::NavigationsController < Spree::Admin::BaseController
   def index
-    @navigation = Spree::Navigation.all
+    @navigation = Spree::Navigation.order("position")
   end
   def new
     @navigation = Spree::Navigation.new
