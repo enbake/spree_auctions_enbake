@@ -15,8 +15,8 @@ Deface::Override.new(
           <div class='sidebar' style='float: none;'>
             <div class='sidebar_header'><h4>Kategorie</h4></div>
             <ul class='sidebar_menu'>
-              <% Spree::Category.all.each do |category| %>
-                <li><%= link_to category.name, view_category_path(category) %></li>
+              <% Spree::Category.all.reject{|i| i.products.empty?}.each do |category| %>
+                <li class = <%= 'active' if @product.category_ids.include? category.id %>><%= link_to category.name, view_category_path(category)  %></li>
               <% end %>
             </ul>
           </div>
