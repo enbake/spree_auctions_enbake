@@ -46,4 +46,22 @@ class Spree::Admin::NavigationsController < Spree::Admin::BaseController
     end
     redirect_to admin_navigations_path
   end
+
+  def sort_nav_up
+    @navigation = Spree::Navigation.find params[:id]
+    @navigation.sort_nav_up
+    respond_to do |format|
+      format.html{redirect_to admin_navigations_path}
+      format.json{head :no_content}
+    end
+  end
+
+  def sort_nav_down
+    @navigation = Spree::Navigation.find params[:id]
+    @navigation.sort_nav_down
+    respond_to do |format|
+      format.html{redirect_to admin_navigations_path}
+      format.json{head :no_content}
+    end
+  end
 end

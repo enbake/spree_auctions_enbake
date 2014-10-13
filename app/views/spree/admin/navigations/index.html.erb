@@ -12,6 +12,7 @@
   <table class="index" id="listing_navigations">
   	<thead>
   		<tr data-hook="navigation_index_headers">
+            <th></th>
             <th>Order</th>
   			<th><%= Spree.t(:name) %></th>
   			<th><%= Spree.t(:url) %></th>
@@ -21,6 +22,8 @@
   	<tbody>
   		<% @navigation.each do |nav|%>
   		  <tr data-hook="admin_navigation_index_rows" class="each_navigation">
+            <td><a href="#" class="icon_link with-tip icon-chevron-up no-text move_up" id="<%= nav.id %>"></a><br/>
+              <a href="#" class="icon_link with-tip icon-chevron-down no-text move_down" id="<%= nav.id %>"></a></td>
             <td class="align-center"><%= Spree.t(nav.position )%></td>
   		  	<td class="align-center"><%= Spree.t(nav_name nav) %></td>
   		  	<td class="align-center"><%= Spree.t(nav.url) %></td>

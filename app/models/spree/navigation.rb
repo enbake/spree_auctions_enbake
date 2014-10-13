@@ -46,5 +46,25 @@ class Spree::Navigation < ActiveRecord::Base
   def set_position
     self.position = Spree::Navigation.all.map(&:position).max + 1
   end
+
+  def sort_nav_up
+    unless position == 1
+      prev_nav = Spree::Navigation.find_by_position(self.position-1)
+      prev_nav.position = self.position
+      self.position = self.position-1
+      self.save
+      prev_nav.save
+    end
+  end
+
+  def sort_nav_down
+    unless self.position == Spree::Navigation.maximum("position")
+     next_nav = Spree::Navigation.find_by_position(self.position+1)
+      next_nav.position = self.position
+      self.position = self.position+1
+      self.save
+      next_nav.save
+    end
+  end
  
 end

@@ -26,7 +26,8 @@ Spree::Core::Engine.routes.draw do
         resources :author_bios
          resources :navigations
         resources :custom_email_contents
-         
+        get '/sort_nav_up' => 'navigations#sort_nav_up'
+        get '/sort_nav_down' =>'navigations#sort_nav_down'
       end
       
       resources :view_categories
