@@ -6,6 +6,8 @@ module Spree
     belongs_to :author_bio, :class_name => "Spree::AuthorBio"
     has_many :followers, :class_name => "Spree::Follower"
 
+    scope :active_products, where("available_on <= ? and auction_end >= ? ", Date.today, Date.today)
+
     attr_accessor :categories_id, :action
     attr_accessible :bid_price
     attr_accessible :auction_end
