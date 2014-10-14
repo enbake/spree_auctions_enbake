@@ -1,5 +1,6 @@
 module Spree
   HomeController.class_eval do
+
     def price
       @products = Product.joins(:variants_including_master).where('spree_variants.bid_price is not null').uniq
     end
@@ -17,6 +18,7 @@ module Spree
     def index
       @searcher = build_searcher(params)
       @products = @searcher.retrieve_products.where("auction_end >= ?", Date.today).order("created_at DESC").limit(3)
+      @footer_products = Product.where("auction_end >= ?", Date.today).order("created_at DESC").limit(6)
       slider = Spree::Taxon.where(:name => 'Slider').first
       @slider_products = slider.products.active if slider
   
