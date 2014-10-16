@@ -17,8 +17,7 @@ module Spree
     end
     def index
       @searcher = build_searcher(params)
-      @products = @searcher.retrieve_products.where("auction_end >= ?", Date.today).order("created_at DESC").limit(3)
-      @footer_products = Product.where("auction_end >= ?", Date.today).order("created_at DESC").limit(6)
+      @products = @searcher.retrieve_products.where("auction_end >= ?", Date.today).order("created_at DESC").limit(8)
       slider = Spree::Taxon.where(:name => 'Slider').first
       @slider_products = slider.products.active if slider
   
