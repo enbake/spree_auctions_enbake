@@ -3,6 +3,7 @@ class Spree::Navigation < ActiveRecord::Base
   translates :name
 
   before_create :set_position
+  after_destroy :update_position
 
   def duplicate
     p = self.dup
@@ -45,6 +46,14 @@ class Spree::Navigation < ActiveRecord::Base
 
   def set_position
     self.position = Spree::Navigation.all.map(&:position).max + 1
+  end
+
+  def update_position
+    navigations = Spree::Navigation.where('position > ?',self.position )
+    navigations.each do |nav|
+      nav.position -= 1
+      nav.save
+    end
   end
 
   def sort_nav_up
