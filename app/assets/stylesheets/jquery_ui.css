@@ -1175,3 +1175,11 @@ body .ui-tooltip {
 	filter: Alpha(Opacity=30);
 	border-radius: 8px;
 }
+
+.half-width-form-control{
+
+    display: inline-block;
+    float: left;
+    width: calc(50%);
+
+}
