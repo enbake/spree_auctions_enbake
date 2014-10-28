@@ -1,10 +1,12 @@
 Spree::Order.class_eval do
+
   checkout_flow do
-    go_to_state :address
+    go_to_state :address, :if => lambda { |order| order.address_not_exist? }
     go_to_state :payment, :if => lambda { |order| order.payment_required? }
     go_to_state :confirm, :if => lambda { |order| order.confirmation_required? }
     go_to_state :complete
   end
+
 
   # If true, causes the payment step to happen during the checkout process
   def payment_required?
@@ -26,6 +28,13 @@ Spree::Order.class_eval do
 
   def self.paypal_payment_method
     Spree::PaymentMethod.select{ |pm| pm.name.downcase =~ /paypal/}.first
+  end
+
+  def address_not_exist?
+    # loggedin -> address false
+    #loggedin => no address true
+    # not loggedin => true
+    self.user.present? && self.user.user_address.nil? ? true : false
   end
 
 end
