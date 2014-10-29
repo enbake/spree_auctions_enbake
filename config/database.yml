@@ -1,0 +1,21 @@
+production: &defaults
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: auctions_development
+  pool: 5
+  username: admin
+  password: admin
+
+development:
+  <<: *defaults
+  database: auctions_development
+
+test:
+  <<: *defaults
+  database: auctions_development
+
+staging:
+  <<: *defaults
+  database: auctions_development
+
