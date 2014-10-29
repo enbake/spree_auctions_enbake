@@ -3,16 +3,17 @@ class Spree::BidsController < Spree::StoreController
   def create
     @prodval= JSON.parse params[:products]
     variant_id = @prodval.first[1].to_i
+    product_id = @prodval.first[0].to_i
     unless spree_current_user
-      session['bid'] = Spree::Bid.new(:price => params[:bid_price], :variant_id =>  variant_id )
+      session['bid'] = Spree::Bid.new(:price => params[:bid_price], :variant_id =>  variant_id ,:product_id => product_id )
       redirect_to spree.login_path
       return
     end
-    @bid = Spree::Bid.find_or_initialize_by_variant_id_and_user_id(variant_id, spree_current_user.id)
+    @bid = Spree::Bid.find_or_initialize_by_variant_id_and_user_id_and_product_id(variant_id, spree_current_user.id,product_id)
     @bid.price = params[:bid_price]
 
     if @bid.save
-      BeddingMailer.bedding_mail(spree_current_user).deliver
+      BeddingMailer.bedding_mail(spree_current_user, @bid).deliver
       respond_to do |format|
         flash[:success] = "Your Bid placed successfully."
         format.html { redirect_to spree.products_path }
