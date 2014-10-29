@@ -5,8 +5,11 @@ module Spree
     has_many :photos, as: :imageable, :class_name => "Spree::Photo", :dependent => :destroy
     belongs_to :author_bio, :class_name => "Spree::AuthorBio"
     has_many :followers, :class_name => "Spree::Follower"
+    has_many :bids ,:class_name => "Spree::Bid"
 
     scope :active_products, where("available_on <= ? and auction_end >= ? ", Date.today, Date.today)
+    scope :expiring_today , where(:auction_end == Date.today-1)
+    scope :expired , where("auction_end <  ? ", Date.today)
 
     attr_accessor :categories_id, :action
     attr_accessible :bid_price

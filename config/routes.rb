@@ -18,6 +18,7 @@ Spree::Core::Engine.routes.draw do
       get "credit_card_info" => "users#credit_card_info", :as => "credit_card_info"
       get "faq" => "users#faq", :as => "faq"
       resources :bids
+      get '/complete_order' => 'bids#complete_order'
 #      get '/static_pages/index', :to => 'Admin/StaticPages#index'
 #      get '/static_pages/new', :to => 'Admin/StaticPages#new' 
 #      #post '/', :to => 'Admin/StaticPages#create'
