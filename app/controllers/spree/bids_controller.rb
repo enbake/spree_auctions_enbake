@@ -23,19 +23,11 @@ class Spree::BidsController < Spree::StoreController
     end
   end
 
-  def complete_order
-    @bid = Spree::Bid.find params[:id]
-
-    redirect_to products_path
-
-  end
-
-    # winner link click
-    # verify product status != closed and bid for this product_id === user_id, bid.status => pending confirmation
-    # checkout flow
-    #################### ------------- after winnder pays
-    # update product.status = closed
-    # update product order_id and confirmation_date
+  # winner link click
+  # checkout flow
+  #################### ------------- after winnder pays
+  # update product.status = closed
+  # update product order_id and confirmation_date
 
 
 end
