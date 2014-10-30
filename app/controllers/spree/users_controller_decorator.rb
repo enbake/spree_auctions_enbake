@@ -1,6 +1,6 @@
 module Spree
   UsersController.class_eval do
-    require 'paypal-sdk-rest'
+    #require 'paypal-sdk-rest'
 
     def send_email
       @order = Order.where(:number => params[:id]).first
