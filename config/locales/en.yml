@@ -10,7 +10,7 @@ en:
     minimum_bid: "Minimum Bid"
     order_mailer:
       confirm_email:
-        bid_place_message: "Your bid is now placed, you will get the result of your bid soon..."
+        bid_place_message: "Your order has been successfully completed.Thanks for purchasing an Auction ."
         bid_accepted: "Your Bid has been Accepted."
         bid_order_no: "Order No."
         bid_payment_message: To receive your order, make the payment to the account
