@@ -12,3 +12,6 @@
 .ui-dialog-titlebar .ui-icon-closethick{
    background-image:url("/assets/ui-icons_666666_256x240.png") !important;
 }
+.flash{
+    background: red !important;
+}

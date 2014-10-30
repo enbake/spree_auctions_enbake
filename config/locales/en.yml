@@ -4,7 +4,7 @@
 en:
   hello: "Hello world"
   spree:
-    place_bid: "Place Bid"
+    place_bid: "Buy"
     your_bid_has_been_added_to_the_system: "Your bid has been added to the system"
     bid_price: "Bid Price"
     minimum_bid: "Minimum Bid"

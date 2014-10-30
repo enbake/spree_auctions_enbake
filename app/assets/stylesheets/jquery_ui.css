@@ -1183,3 +1183,6 @@ body .ui-tooltip {
     width: calc(50%);
 
 }
+.flash{
+    background-color: red !important;
+}

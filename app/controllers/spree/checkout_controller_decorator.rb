@@ -9,9 +9,10 @@ module Spree
         end
         if @order.completed?
           if !spree_current_user.credit_card.nil? || spree_current_user.can_bid
-            
+
             session[:order_id] = nil
-            flash.notice = Spree.t(:your_bid_has_been_added_to_the_system)
+            flash.notice = Spree.t(:Your_order_has_been_placed_successfully)
+
             flash[:commerce_tracking] = "nothing special"
             redirect_to completion_route
           else
