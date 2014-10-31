@@ -1,14 +1,21 @@
-<%if Spree::CustomEmailContent.where("lower(name) = ?", 'confirm_email').first.nil? %>
-    <%= Spree.t('order_mailer.confirm_email.dear_customer') %>
-    
-    <%= Spree.t('order_mailer.confirm_email.bid_place_message') %>
-    
-    <%= Spree.t('order_mailer.confirm_email.thanks') %>
-<%else%>
-    <% body = Spree::CustomEmailContent.where("lower(name) = ?", 'confirm_email').first.body%>
-    <% content = body[I18n.locale] || body.values.first || "" %>
-    <% @content = raw content%>
-    <%= @content.html_safe%>
-<%end%>
+Dear Customer,
+Please review and retain the following order information for your records.
+============================================================
+Order Summary
+============================================================
+<% for item in @order.line_items %>
+    <%=item.variant.sku %> <%=item.variant.product.name%> (<%=item.quantity%>) @ <%= number_to_currency item.price %>
+<% end %>
+============================================================
+Subtotal: <%= number_to_currency @order.item_total %>
+<% @order.adjustments.select{|adj| !adj.is_tax}.each do |adj| %>
+    <%= "#{adj.label}: #{number_to_currency adj.amount}"%>
+<% end %>
+<% @order.adjustments.tax.each do |tax| %>
+    <%= "#{tax.label}: #{number_to_currency tax.amount}"%>
+<% end %>
+Order Total: <%= number_to_currency @order.total %>
 
+
+Thank you for your business.
 

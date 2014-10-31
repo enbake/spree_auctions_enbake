@@ -8,6 +8,7 @@ en:
     your_bid_has_been_added_to_the_system: "Your bid has been added to the system"
     bid_price: "Bid Price"
     minimum_bid: "Minimum Bid"
+    new_navigation: "New Menu Item"
     order_mailer:
       confirm_email:
         bid_place_message: "Your order has been successfully completed.Thanks for purchasing an Auction ."
