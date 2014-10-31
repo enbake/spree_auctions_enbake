@@ -88,4 +88,20 @@ namespace :auction do
     end
   end
 
+  desc "checkout mail to  Winner"
+  task :winner_mail => :environment do
+    product = Spree::Product.last
+      bid = product.bids.where(:price => product.bids.maximum(:price)).first
+      product.status = 'pending_confirmation'
+      product.winner_choose_date = Date.today
+      product.save
+
+      unless bid.nil?
+      bid.status ='pending_confirmation'
+      bid.save
+      BeddingMailer.winning_mail(bid).deliver
+      end
+    end
+
+
 end
