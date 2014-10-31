@@ -7,7 +7,6 @@ Spree::Order.class_eval do
     go_to_state :complete
   end
 
-
   # If true, causes the payment step to happen during the checkout process
   def payment_required?
     return true
@@ -15,7 +14,7 @@ Spree::Order.class_eval do
 
   # If true, causes the confirmation step to happen during the checkout process
   def confirmation_required?
-    return true
+    return false
   end
 
   def display_total_bid_price
