@@ -31,6 +31,9 @@ Spree::Core::Engine.routes.draw do
         resources :custom_email_contents
         get '/sort_nav_up' => 'navigations#sort_nav_up'
         get '/sort_nav_down' =>'navigations#sort_nav_down'
+        resources :products do
+          resources :bids
+        end
       end
       
       resources :view_categories
