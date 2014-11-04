@@ -1,21 +1,32 @@
 Dear Customer,
+<br>
 Please review and retain the following order information for your records.
+<br>
 ============================================================
+<br>
 Order Summary
+<br>
 ============================================================
+<br>
 <% for item in @order.line_items %>
-    <%=item.variant.sku %> <%=item.variant.product.name%> (<%=item.quantity%>) @ <%= number_to_currency item.price %>
+    <%=item.variant.sku %> <a href="<%= ActionMailer::Base.default_url_options[:host] %>/products/<%= item.variant.product.permalink%>"><%=item.variant.product.name %></a> (<%=item.quantity%>) @ <%= number_to_currency item.price %>
 <% end %>
+<br>
 ============================================================
+<br>
 Subtotal: <%= number_to_currency @order.item_total %>
+<br>
 <% @order.adjustments.select{|adj| !adj.is_tax}.each do |adj| %>
     <%= "#{adj.label}: #{number_to_currency adj.amount}"%>
 <% end %>
+<br>
 <% @order.adjustments.tax.each do |tax| %>
     <%= "#{tax.label}: #{number_to_currency tax.amount}"%>
 <% end %>
+<br>
 Order Total: <%= number_to_currency @order.total %>
-
+<br>
+<br>
 
 Thank you for your business.
 

@@ -4,6 +4,12 @@ class Spree::BidsController < Spree::StoreController
     @prodval= JSON.parse params[:products]
     variant_id = @prodval.first[1].to_i
     product_id = @prodval.first[0].to_i
+    @product = Spree::Product.find product_id
+    if @product.status == 'closed'
+      flash[:error]= "This Auction has already sold"
+      redirect_to product_path @product
+      return
+    end
     unless spree_current_user
       session['bid'] = Spree::Bid.new(:price => params[:bid_price], :variant_id =>  variant_id ,:product_id => product_id )
       redirect_to spree.login_path
