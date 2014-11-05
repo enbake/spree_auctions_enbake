@@ -52,6 +52,73 @@ module Spree
       end
     end
 
+    def process_order
+      # if user is admin
+         #find bid with id
+      #else
+      if !spree_current_user
+          flash[:error]= "You are not authorize for this action"
+          redirect_to root_path
+          debugger
+          return
+      else
+         if !spree_current_user.admin?
+           flash[:error] = "You are not authorize for this action"
+           redirect_to root_path
+           debugger
+           return
+         end
+      end
+      @bid = Spree::Bid.find params[:id]
+
+      if @bid.present? && @bid.product.status != 'closed' && @bid.status == 'pending_confirmation'
+        params = { "start_price"=>@bid.product.price.to_f, "bid_price"=>@bid.price,
+                   "products"=>"{\"#{@bid.product_id}\":#{@bid.variant_id}}", "quantity"=>"1",
+                   "action"=>"populate", "controller"=>"spree/orders",
+                   "locale"=>"en"}
+
+        if current_order.present?
+          current_order.line_items.delete_all
+        end
+        populator = Spree::OrderPopulator.new(current_order(true), current_currency)
+
+        if populator.populate(params.slice(:quantity,:products,:variants))
+          current_order.create_proposed_shipments if current_order.shipments.any?
+          variant_id = @bid.variant_id
+          bid_price = @bid.price
+
+          current_order.line_items.build({:variant_id => @bid.variant_id ,:price => @bid.price , :bid_price => @bid.price ,
+                                          :currency=> current_currency,:quantity=> 1},:without_protection => true).save
+
+
+          current_order.update_attributes({:state=> 'complete',:user_id=> @bid.user_id,:payment_total=>@bid.price.to_f,
+                                         :payment_state=> 'complete',:email=>@bid.user.email,:completed_at=> Date.today},
+                                         :without_protection => true)
+          current_order.save
+          @bid.update_attributes({:status => 'closed'},:without_protection => true)
+          @bid.product.update_attributes({:status => 'closed',:confirmation_date=> Date.today,:order_id=>current_order.id},:without_protection => true)
+
+          Spree::OrderMailer.confirm_email(current_order).deliver
+          respond_with(@order) do |format|
+            flash[:error] = "You have successfully completed the order"
+            format.html { redirect_to admin_pendding_order_path }
+          end
+        else
+          flash[:error] = populator.errors.full_messages.join(" ")
+          redirect_to products_path
+        end
+      else
+        flash[:error]= "You are not authorized for this action"
+        redirect_to products_path
+      end
+
+
+
+
+    end
+
+
+
     def populate
       if current_order.present?
         current_order.line_items.delete_all
@@ -79,6 +146,8 @@ module Spree
       def confirmation
       end
     end
+
+
 
 
     def paypal_payment

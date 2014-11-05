@@ -9,6 +9,7 @@ Spree::Core::Engine.routes.draw do
 	  	match "users/:id/send_email" => "users#send_email", :as => "users_send_email"
       match "orders/:id/confirmation" => "orders#confirmation", :as => "orders_confirmation"
       match "orders/complete_order" => "orders#complete_order", :as => "complete_order"
+      match "orders/process_order" => "orders#process_order", :as => "process_order"
       match "paypal_payment" => "orders#paypal_payment", :as => "orders_paypal_payment"
       match "payment_options" => "home#payment_options", :as => "home_payment_options"
       match "payment" => "users#payment"
@@ -19,7 +20,8 @@ Spree::Core::Engine.routes.draw do
       get "credit_card_info" => "users#credit_card_info", :as => "credit_card_info"
       get "faq" => "users#faq", :as => "faq"
       resources :bids
-      get '/complete_order' => 'bids#complete_order'
+     # get '/complete_order' => 'bids#complete_order'
+
 #      get '/static_pages/index', :to => 'Admin/StaticPages#index'
 #      get '/static_pages/new', :to => 'Admin/StaticPages#new' 
 #      #post '/', :to => 'Admin/StaticPages#create'
@@ -34,6 +36,7 @@ Spree::Core::Engine.routes.draw do
         resources :products do
           resources :bids
         end
+        get '/pendding_order' =>'products#pendding_order', :as => 'pendding_order'
       end
       
       resources :view_categories
