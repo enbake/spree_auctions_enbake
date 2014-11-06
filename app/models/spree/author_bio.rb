@@ -4,4 +4,7 @@ class Spree::AuthorBio < ActiveRecord::Base
 
   has_many :products, :class_name => "Spree::Product"
   has_many :photos, as: :imageable, :class_name => "Spree::Photo", :dependent => :destroy
+
+  translates :name ,:biography
+
 end

@@ -22,6 +22,9 @@
           <tr data-hook="admin_bios_index_rows" class="<%= cycle('odd', 'even') %>">
             <td class="align-center"><%= link_to bio.try(:name), edit_admin_author_bio_path(bio) %></td>
             <td class="align-center"><%= bio.biography.html_safe %></td>
+            <td class="actions" data-hook="navigation_index_row_actions_edit">
+              <a href="<%=edit_admin_author_bio_path(bio)%>" class="edit icon_link with-tip icon-edit no-text"></a>
+            </td>
             <td class="actions" data-hook="admin_bios_index_row_actions">
               <a href="<%=admin_author_bio_path(bio)%>" class="delete-resource icon_link with-tip icon-trash no-text" data-method="delete" data-action="destroy" data-confirm="Are you sure?"></a>
             </td>

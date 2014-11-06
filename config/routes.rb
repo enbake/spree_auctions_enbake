@@ -1,8 +1,13 @@
 Spree::Core::Engine.routes.draw do
+  get "static_translations/index"
+
   #get "static_pages/index"
 
   # Add your extension routes here
 	Spree::Core::Engine.routes.draw do
+    resources :static_translations
+  #get "/static_translations"=> "StaticTranslations#index"
+
   #get "static_pages/index" 
 
 		get "/price" => "home#price"

@@ -8,11 +8,14 @@
     <%= button_link_to Spree.t(:new_biography), new_admin_author_bio_path, {:icon => 'icon-plus', :id => 'admin_new_biography' } %>
   </li>
 <% end %>
-
+<% translations = @bio.translations %>
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @bio } %>
 
 <%= form_for [:admin, @bio], :method => :put, :html => { :multipart => true } do |f| %>
-  <fieldset class="no-border-top">
+    <%= select_tag "lang", options_for_select([["en", :lang => translations.where(locale: "en").first.try(:name)],["pl",
+                               :lang => translations.where(locale: "pl").first.try(:name)] ]), id: "lang_dropdn" %>
+
+    <fieldset class="no-border-top">
     <table class = "no_border">
     <tr class="no_border">
         <td class="no_border">
@@ -20,6 +23,7 @@
         </td>
         <td class="no_border">
             <%= f.text_field :name %>
+          <%= hidden_field_tag "english_name", translations.where(locale: "en").first.try(:name)%>
         </td>
     </tr>
     <tr class="no_border">
@@ -28,6 +32,7 @@
         </td>
         <td class="no_border">
             <%= f.text_area :biography, :id => "bio_description" %>
+            <%= hidden_field_tag "english_bio_description", translations.where(locale: "en").first.try(:biography)%>
         </td>
     </tr>
     <tr>

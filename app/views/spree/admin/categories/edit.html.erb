@@ -1,0 +1,38 @@
+<% content_for :page_title do %>
+    <%= Spree.t(:editing_category) %>
+<% end %>
+<div class="left eight columns alpha" data-hook="admin_product_form_left">
+
+  <% translations = @category.translations %>
+  <%= form_for [:admin, @category], :method => :put do |f| %>
+      <%= select_tag "lang", options_for_select([["en", :lang => translations.where(locale: "en").first.try(:name)],["pl", :lang => translations.where(locale: "pl").first.try(:name)] ]), id: "lang_dropdn" %>
+      <fieldset class="no-border-top">
+        <table class = "no_border">
+          <tr class="no_border">
+            <td class="no_border">
+              <%= f.label :name%>
+            </td>
+            <td class="no_border">
+              <%= f.text_field :name, required:true, value: @category.name %>
+              <%= hidden_field_tag "english", translations.where(locale: "en").first.try(:name)%>
+            </td>
+          </tr>
+
+
+          <tr>
+            <td class="no_border"></td>
+            <td class="no_border" colspan= "2" style="float:right;">
+              <%= f.submit 'Update' %>
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+  <% end %>
+  <script>
+      $("#lang_dropdn").change(function(e){
+          selected = $("#lang_dropdn :selected");
+          text = selected.attr('lang');
+          $("#navigation_name").attr('value', text);
+      });
+
+  </script>

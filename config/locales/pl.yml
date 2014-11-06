@@ -1,4 +1,43 @@
 pl:
+  spree:
+    brand: "DomAukcyjny"
+    title: "Najnowsze aukcje"
+    catalog_btn: "Przejdź do katalogu"
+    sign_up: "Zarejestruj"
+    sign_in: "Zaloguj się"
+    sign_out: "Wyloguj się"
+    powered_by: "Wspierane przez"
+    email: "E-mail"
+    password : "hasło"
+    remember_me : "Zapamiętaj mnie"
+    login : "login"
+    or: "lub"
+    create_a_new_account : "Utwórz nowe konto"
+    forgot_password : "Nie pamiętam hasła"
+    confirm_password : "Potwierdzenie hasła"
+    login_as_existing : "Zaloguj jako dotychczasowego klienta"
+    create : "tworzyć"
+    no_products_found : "Nie znaleziono produktów"
+    go_catalog : "Do Katalogu'"
+    bidders : "Oferenci"
+    categories : "Kategorie"
+    author_name : "Autor Nazwa"
+    bio : "Bio"
+    date_of_art_created : "Data sztuki stworzone"
+    art_topics : "ATematy sztuki"
+    techniques : "techniki"
+    auction_ending_date : "Aukcja Zakończenie Data"
+    signature: 'podpis'
+    height : "wysokość"
+    width : "szerokość"
+    depth : 'głębokość'
+    auction_history : "Historia aukcji"
+    no_auctions_yet : "Aukcje Jednak nie"
+    user_name : "Nazwa użytkownika"
+    bid_price : "Cena oferty"
+    bid_date : "Data oferty"
+
+
   date:
     abbr_day_names:
     - nie

@@ -9,8 +9,9 @@ Deface::Override.new(
                   <li><%= link_to nav.name, nav.url %></li> 
                 <%end%>
               <%end%>
-             <li><%= link_to Spree.t(:Signup), new_spree_user_registration_path unless spree_current_user %></li>"
+             <li><%= link_to Spree.t(:sign_up), new_spree_user_registration_path unless spree_current_user %></li>"
              <li><%= link_to Spree.t(:sign_in), spree_user_session_path unless spree_current_user %></li>"
              <li><%= link_to Spree.t(:sign_out), destroy_spree_user_session_path if spree_current_user %></li>"
              </div >',
     :name => "header")
+
