@@ -28,8 +28,8 @@ class Spree::Admin::AuthorBiosController < Spree::Admin::BaseController
     if @bio.update_attributes(params[:author_bio])
       if params[:lang] == 'pl'
         translation =  @bio.translations.find_or_initialize_by_locale(params[:lang])
-        @bio.translations.where(locale: "en").first.update_attributes(:name => params[:english_name],:biography => params[:english_name] )
-        translation.update_attributes(:name => params[:author_bio][:name],:biography => params[:author_bio][:english_bio_description])
+        @bio.translations.where(locale: "en").first.update_attributes(:name => params[:english_name],:biography => params[:english_bio_description] )
+        translation.update_attributes(:name => params[:author_bio][:name],:biography => params[:author_bio][:biography])
       end
       flash[:notice] = "Bio updated successfully"
     else
