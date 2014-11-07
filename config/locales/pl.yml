@@ -36,6 +36,14 @@ pl:
     user_name : "Nazwa użytkownika"
     bid_price : "Cena oferty"
     bid_date : "Data oferty"
+    place_bid: "Licytuj"
+    your_bid_has_been_added_to_the_system: "Twoja oferta została dodana do systemu"
+    bid_price: "Cena oferty"
+    minimum_bid: "minimalna stawka"
+    your_bid : "Twoja oferta"
+    faq : "Pomoc"
+
+
 
 
   date:

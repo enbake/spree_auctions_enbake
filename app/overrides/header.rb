@@ -12,6 +12,8 @@ Deface::Override.new(
              <li><%= link_to Spree.t(:sign_up), new_spree_user_registration_path unless spree_current_user %></li>"
              <li><%= link_to Spree.t(:sign_in), spree_user_session_path unless spree_current_user %></li>"
              <li><%= link_to Spree.t(:sign_out), destroy_spree_user_session_path if spree_current_user %></li>"
+             <li class="lang-en "><a href="/en" hreflang="en" title="English" class="qtrans_flag qtrans_flag_en"><span style="display:none">English</span></a></li>
+             <li class="lang-pl"><a href="/pl" hreflang="pt" title="Polish" class="qtrans_flag qtrans_flag_pl"><span style="display:none">Polish</span></a></li>
              </div >',
     :name => "header")
 

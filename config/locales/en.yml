@@ -44,6 +44,8 @@ en:
     user_name : "User Name"
     bid_price : "Bid Price"
     bid_date : "Bid Date"
+    your_bid : "Your Bid"
+    faq : "FAQ"
 
     order_mailer:
       confirm_email:
