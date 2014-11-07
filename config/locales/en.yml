@@ -46,6 +46,20 @@ en:
     bid_date : "Bid Date"
     your_bid : "Your Bid"
     faq : "FAQ"
+    details : "Details"
+    auction_sold : "This Auction has already sold"
+    bid_place : "Your Bid placed successfully"
+    bid_place_error : "Error in Bid place."
+    user_not_authorized : "You are not authorized for this action"
+    select_payment_method : "Please select the payment method. "
+
+    bedding_mail:
+      hello : 'Hello'
+      thanks_message : "Thanks for you showing your interest in Product. Your Bid has been placed successfully."
+      check : "You can check"
+      touch_soon : "Will touch base soon once winner is selected."
+      thanks : "Thanks"
+
 
     order_mailer:
       confirm_email:

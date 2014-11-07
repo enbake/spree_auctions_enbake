@@ -1,8 +1,8 @@
 <fieldset id="payment" data-hook>
-  <legend><%= t(:payment_information) %></legend>
+  <legend><%= Spree.t(:payment_information) %></legend>
   <table>
     <tr>
-      <td style="width: 440px;">Please select the payment method. </td>
+      <td style="width: 440px;"><%= Spree.t(:select_payment_method)%> </td>
       <td>
       <div data-hook="checkout_payment_step">
         <% @order.available_payment_methods.each do |method| %>

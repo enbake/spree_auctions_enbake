@@ -2,7 +2,7 @@ Deface::Override.new(
     :virtual_path  => "spree/checkout/edit",
     :replace => "div#checkout",
     :text  => '<div id="checkout">
-  <h1>Checkout</h1>
+  <h1><%= Spree.t(:checkout)%></h1>
   <%#= checkout_progress %>
   <br clear="left" />
   <%= render "spree/shared/error_messages", :target => @order %>

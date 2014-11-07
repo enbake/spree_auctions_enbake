@@ -6,7 +6,7 @@ class Spree::BidsController < Spree::StoreController
     product_id = @prodval.first[0].to_i
     @product = Spree::Product.find product_id
     if @product.status == 'closed'
-      flash[:error]= "This Auction has already sold"
+      flash[:error]= Spree.t(:auction_sold)
       redirect_to product_path @product
       return
     end
@@ -21,11 +21,11 @@ class Spree::BidsController < Spree::StoreController
     if @bid.save
       BeddingMailer.bedding_mail(spree_current_user, @bid).deliver
       respond_to do |format|
-        flash[:success] = "Your Bid placed successfully."
+        flash[:success] = Spree.t(:bid_place)
         format.html { redirect_to spree.products_path }
       end
     else
-      flash[:error] = "Error in Bid place."
+      flash[:error] = Spree.t(:bid_place_error)
       redirect_to :back
     end
   end

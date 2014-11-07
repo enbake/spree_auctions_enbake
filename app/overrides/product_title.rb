@@ -13,7 +13,7 @@ Deface::Override.new(
           <%= link_to 'Do Katalogu', catalog_path ,:class =>'btn btn-primary btn-block'%>
           <hr>
           <div class='sidebar' style='float: none;'>
-            <div class='sidebar_header'><h4>Kategorie</h4></div>
+            <div class='sidebar_header'><h4><%= Spree.t(:categories)%></h4></div>
             <ul class='sidebar_menu nav nav-pills nav-stacked'>
               <% Spree::Category.all.reject{|i| i.products.active_products.empty?}.each do |category| %>
                 <li class = <%= 'active' if @product.category_ids.include? category.id %>><%= link_to category.name, view_category_path(category)  %></li>
@@ -58,7 +58,7 @@ Deface::Override.new(
                 <%= render :partial => 'cart_form' %>
               </div>
             </div>
-            <div class='sidebar_header'><h4>FAQ</h4></div>
+            <div class='sidebar_header'><h4><%= Spree::t(:faq)%></h4></div>
             <ul class='sidebar_menu'> 
               <% StaticContentPage.all.each_with_index do |sp, count|%>
                 <li><%= link_to sp.title, faq_path(anchor: 'static_question_' + (count+1).to_s)%></li>

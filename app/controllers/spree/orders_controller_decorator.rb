@@ -47,7 +47,7 @@ module Spree
           redirect_to products_path
         end
       else
-        flash[:error]= "You are not authorized for this action"
+        flash[:error]= Spree.t(:user_not_authorized)
         redirect_to products_path
       end
     end

@@ -42,8 +42,64 @@ pl:
     minimum_bid: "minimalna stawka"
     your_bid : "Twoja oferta"
     faq : "Pomoc"
+    details : "Szczegóły"
+    auction_sold : "Ta aukcja została już sprzedana"
+    bid_place : "Twoja oferta umieszczona SKUTECZNIE"
+    bid_place_error :  "Błąd w Bid Loko."
+    user_not_authorized : "Nie masz uprawnień do tego działania"
+    address1: Adres
+    address2: Adres (cd.)
+    city: Miasto
+    country: Państwo
+    first_name: Imię
+    last_name: Nazwisko
+    phone: Telefon
+    state: Województwo
+    zip: Kod pocztowy
+    street_address: Adres ulicy
+    street_address_2: Adres ulicy (cd.)
+    billing_address: Adres do zapłaty
+    shipping_address: Adres wysyłki
+    use_billing_address: Taki sam jak do zapłaty
+    save_and_continue: Zachowaj i kontynuuj
+    item: Pozycja
+    item_description: Opis pozycji
+    item_total: Pozycja razem
+    shopping_cart: Koszyk
+    checkout: Złożenie zamówienia
+    payment_information: Informacja o płatności
+    select_payment_method : Proszę wybrać sposób płatności.
+    logged_in_as: Zalogowano jako
+    logged_in_succesfully: Zalogowano
+    logged_out: Wylogowano.
+    login: Logowanie
+    login_as_existing: Zaloguj jako istniejący użytkownik
+    login_failed: Uwierzytelnienie nie powiodło się.
+    login_name: Zaloguj
+    logout: Wyloguj
 
 
+    bedding_mail:
+      hello : 'Hello'
+      thanks_message : "Thanks for you showing your interest in Product. Your Bid has been placed successfully."
+      check : "You can check"
+      touch_soon : "Will touch base soon once winner is selected."
+      thanks : "Thanks"
+
+
+    order_mailer:
+          confirm_email:
+            bid_place_message: "Twoje zamówienie zostało pomyślnie completed.Thanks za zakup na aukcji."
+            bid_accepted: "Twoja oferta została przyjęta."
+            bid_order_no: "Zamówienie nr"
+            bid_payment_message: "Aby otrzymać swoje zamówienie, dokonać wpłaty na konto"
+            bid_ship_message: " Your order will be shipped to following address. "
+            bid_address: "Twoje zamówienie zostanie wysłane na następujący adres."
+            subject: "Dom Zamówienie"
+            bid_email_subject: "Witamy w domu aukcyjnym"
+            make_payment: "To make the payment, login to your account then select 'Payment' link from top of navigation bar."
+    my_payments: "Moje Płatności"
+    Approved: "zatwierdzony"
 
 
   date:

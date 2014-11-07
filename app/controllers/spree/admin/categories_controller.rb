@@ -44,4 +44,15 @@ class Spree::Admin::CategoriesController < Spree::Admin::BaseController
     redirect_to admin_categories_path
   end
 
+  def destroy
+    @category = Spree::Category.find params[:id]
+    if @category.destroy
+      flash[:notice] = "Category deleted successfully"
+    else
+      flash[:error] = "Error occurred while deleting category"
+    end
+    redirect_to admin_categories_path
+  end
+
+
 end
