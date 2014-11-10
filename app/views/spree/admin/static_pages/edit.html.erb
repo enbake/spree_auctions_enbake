@@ -1,0 +1,49 @@
+<% content_for :page_title do %>
+    <%= Spree.t(:editing_faq) %>
+<% end %>
+<div class="left eight columns alpha" data-hook="admin_product_form_left">
+
+  <% translations = @static_page.translations %>
+  <%= form_for [:admin, @static_page], :url=> admin_static_page_path ,:method => :put do |f| %>
+      <%= select_tag "lang", options_for_select([["en", :lang => translations.where(locale: "en").first.try(:title)],
+                 ["pl", :lang => translations.where(locale: "pl").first.try(:title)] ]), id: "lang_dropdn" %>
+      <fieldset class="no-border-top">
+        <table class = "no_border">
+          <tr class="no_border">
+            <td class="no_border">
+              <%= f.label :title%>
+            </td>
+            <td class="no_border">
+              <%= f.text_field :title, required:true, value: @static_page.title %>
+              <%= hidden_field_tag "english_title", translations.where(locale: "en").first.try(:title)%>
+            </td>
+          </tr>
+          <tr>
+            <td class="no_border">
+              <%= f.label :description%>
+            </td>
+            <td class="no_border">
+
+              <%= f.text_area :description, :rows => 5, :cols => 115 , value: @static_page.description  %>
+              <%= hidden_field_tag "english_description", translations.where(locale: "en").first.try(:description)%>
+            </td>
+          </tr>
+
+
+          <tr>
+            <td class="no_border"></td>
+            <td class="no_border" colspan= "2" style="float:right;">
+              <%= f.submit 'Update' %>
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+  <% end %>
+  <script>
+      $("#lang_dropdn").change(function(e){
+          selected = $("#lang_dropdn :selected");
+          text = selected.attr('lang');
+          $("#navigation_name").attr('value', text);
+      });
+
+  </script>

@@ -1,16 +1,43 @@
-<div>
-<% count = 1%>
-<% @data.each do |staticpage| %>
-<div id="static_question_<%= count %>">
-    <h3><%= count%>. <%= staticpage.title %></h3>
-</div>
-<div>
-    <h5><%= raw staticpage.description %></h5>
-</div>
-<br/>
-<br/>
-<% count+=1%>
-<% end %>
-<br/>
-<%= button_to "BACK", :back, :method => 'get' %>
-</div>
+
+<% content_for :page_title do %>
+    <%= Spree.t(:listing_faqs) %>
+<%end%>
+
+<% content_for :page_actions do %>
+    <li id="new_navigation_link">
+      <%= button_link_to Spree.t(:new_faq), new_admin_static_page_path, {:icon => 'icon-plus', :id => 'new_admin_navigation' } %>
+    </li>
+<%end%>
+
+<% if  @data.any? %>
+    <table class="index" id="listing_navigations">
+      <thead>
+      <tr data-hook="navigation_index_headers">
+
+        <th><%= Spree.t(:title) %></th>
+        <th><%= Spree.t(:description) %></th>
+        <th data-hook="navigation_index_headers" class="actions"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% count = 1%>
+      <% @data.each do |staticpage| %>
+          <tr data-hook="admin_navigation_index_rows" class="each_navigation">
+            <td class="align-center"><%= count %> . <%= staticpage.title %></td>
+            <td class="align-center"><%= raw staticpage.description %></td>
+            <% count+=1%>
+            <td class="actions" data-hook="navigation_index_row_actions_edit">
+              <a href="<%=edit_admin_static_page_path(staticpage)%>" class="edit icon_link with-tip icon-edit no-text"></a>
+            </td>
+            <td class="actions" data-hook="navigation_index_row_actions">
+              <a href="<%=admin_static_page_path(staticpage)%>" class="delete-resource icon_link with-tip icon-trash no-text" data-method="delete" data-action="destroy" data-confirm="Are you sure?"></a>
+            </td>
+      <% end %>
+      </tr>
+      </tbody>
+    </table>
+<% else %>
+    <div class="no-object-found">
+      <%= Spree.t(:no_results) %>
+    </div>
+<%end%>

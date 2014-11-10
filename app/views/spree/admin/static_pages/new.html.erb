@@ -1,4 +1,5 @@
 <%= form_for [:admin, @static_page], :url=> admin_static_pages_path do |f| %>
+<%= select_tag "lang", options_for_select(["en", "pl"])%>
 <table class = "no_border">
     <tr class="no_border">
         <td class="no_border">
