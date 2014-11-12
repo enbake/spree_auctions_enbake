@@ -52,13 +52,54 @@ en:
     bid_place_error : "Error in Bid place."
     user_not_authorized : "You are not authorized for this action"
     select_payment_method : "Please select the payment method. "
-
-    bedding_mail:
-      hello : 'Hello'
-      thanks_message : "Thanks for you showing your interest in Product. Your Bid has been placed successfully."
-      check : "You can check"
-      touch_soon : "Will touch base soon once winner is selected."
-      thanks : "Thanks"
+    showcasing_works : "Beautiful theme for showcasing your works."
+    ideas_into_beautiful_things : "We love to turn ideas into beautiful things."
+    greater_than_the_minimun_bid: "Your bid must be greater than the Minimun Bid"
+    greater_than_the_last_bid: "Your bid must be greater than the Last Bid"
+    hello : 'Hello'
+    thanks_message : "Thanks for you showing your interest in Product. Your Bid has been placed successfully."
+    check : "You can check"
+    touch_soon : "Will touch base soon once winner is selected."
+    thanks : "Thanks"
+    here : "here"
+    winner_for_the_bid : "You are selected as Winner for the bid which you have done earlier on Auction House for Product # ."
+    payment_checkout_via_below_link : "Proceed for payment checkout via below link."
+    checkout_link : "Checkout link"
+    expire_in_48hrs : "Note : Link will expire in 48hrs, Once link is expired you will no longer be winner for this Bid."
+    dear_customer : "Dear Customer,"
+    please_review_order_information : "Please review and retain the following order information for your records."
+    order_summary : "Order Summary"
+    subtotal : "Subtotal:"
+    order_total : "Order Total:"
+    thank_for_business : "Thank you for your business."
+    welcome : "welcome"
+    confirm_email_through_link : "You can confirm your account email through the link below:"
+    total_price : "Total Price"
+    Profile : "Profile"
+    no_product_followed : "No product followed yet"
+    firstname: First Name
+    lastname: Last Name
+    number: Numer
+    card_type : Card Type
+    add_Update_credit_card: Add/Update Credit Card
+    credit_card: Credit Card
+    followed_products: Followed Products
+    update_profile: Update Profile
+    is_company : Is Company
+    mobile : Mobile
+    land_line: Land Line
+    zip_code : Zip Code
+    apartment_no : Apartment No
+    house_no : House No
+    street_no: Street No
+    street: Street
+    user_address : User Address
+    email_frequency_followed_products : Email frequency for followed products
+    change_password: Change Password
+    company_name: Company Name
+    daily : Daily
+    weekly : Weekly
+    monthly : Monthly
 
 
     order_mailer:
@@ -66,7 +107,7 @@ en:
         bid_place_message: "Your order has been successfully completed.Thanks for purchasing an Auction ."
         bid_accepted: "Your Bid has been Accepted."
         bid_order_no: "Order No."
-        bid_payment_message: To receive your order, make the payment to the account
+        bid_payment_message: "To receive your order, make the payment to the account"
         bid_ship_message: " Your order will be shipped to following address. "
         bid_address: "Your shipping Adress:"
         subject: "House Order"

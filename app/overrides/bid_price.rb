@@ -7,9 +7,9 @@ Deface::Override.new(
             <%= Spree.t(:place_bid) %>
           <% end %></div>
           <div id="dialog" title="Warning" style="display:none">
-            <p>Your bid must be greater than the Minimun Bid</p>
+            <p><%= Spree.t(:greater_than_the_minimun_bid)%></p>
          </div>
          <div id="biddialog" title="Warning" style="display:none">
-            <p>Your bid must be greater than the Last Bid</p>
+            <p><%= Spree.t(:greater_than_the_last_bid)%></p>
          </div>', 
     :name => "bid_price")

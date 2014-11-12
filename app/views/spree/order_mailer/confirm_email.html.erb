@@ -1,10 +1,10 @@
-Dear Customer,
+<%= Spree.t(:dear_customer)%>
 <br>
-Please review and retain the following order information for your records.
+<%= Spree.t(:please_review_order_information)%>
 <br>
 ============================================================
 <br>
-Order Summary
+<%= Spree.t(:order_summary)%>
 <br>
 ============================================================
 <br>
@@ -14,7 +14,7 @@ Order Summary
 <br>
 ============================================================
 <br>
-Subtotal: <%= number_to_currency @order.item_total %>
+<%= Spree.t(:subtotal)%> <%= number_to_currency @order.item_total %>
 <br>
 <% @order.adjustments.select{|adj| !adj.is_tax}.each do |adj| %>
     <%= "#{adj.label}: #{number_to_currency adj.amount}"%>
@@ -24,9 +24,9 @@ Subtotal: <%= number_to_currency @order.item_total %>
     <%= "#{tax.label}: #{number_to_currency tax.amount}"%>
 <% end %>
 <br>
-Order Total: <%= number_to_currency @order.total %>
+<%= Spree.t(:order_total)%> <%= number_to_currency @order.total %>
 <br>
 <br>
 
-Thank you for your business.
+<%= Spree.t(:thank_for_business)%>
 

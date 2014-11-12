@@ -1,7 +1,7 @@
 <%if Spree::CustomEmailContent.where("lower(name) = ?", 'confirmation_instructions').first.nil? %>
-    <p>Welcome <%= @email %>!</p>
+    <p><%= Spree.t(:welcome)%> <%= @email %>!</p>
     
-    <p>You can confirm your account email through the link below:</p>
+    <p><%= Spree.t(:confirm_email_through_link)%></p>
     <p><%= link_to 'Confirm my account', spree.spree_user_confirmation_url( :confirmation_token => @resource.confirmation_token) %></p>
 
 <%else%>

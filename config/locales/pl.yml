@@ -69,6 +69,10 @@ pl:
     checkout: Złożenie zamówienia
     payment_information: Informacja o płatności
     select_payment_method : Proszę wybrać sposób płatności.
+    showcasing_works : "Piękny temat dla wystawiających swoje prace."
+    ideas_into_beautiful_things : "Kochamy do wcielania pomysłów w pięknych rzeczy."
+    greater_than_the_minimun_bid: "Twoja oferta musi być większa niż Minimum Bid"
+    greater_than_the_last_bid: "Twoja oferta musi być większa niż ostatnia próba"
     logged_in_as: Zalogowano jako
     logged_in_succesfully: Zalogowano
     logged_out: Wylogowano.
@@ -77,15 +81,54 @@ pl:
     login_failed: Uwierzytelnienie nie powiodło się.
     login_name: Zaloguj
     logout: Wyloguj
-
-
-    bedding_mail:
-      hello : 'Hello'
-      thanks_message : "Thanks for you showing your interest in Product. Your Bid has been placed successfully."
-      check : "You can check"
-      touch_soon : "Will touch base soon once winner is selected."
-      thanks : "Thanks"
-
+    hello : 'Halo'
+    thanks_message : "Dzięki Ci pokazując zainteresowanie Produktu. Twoja oferta znalazła się powodzeniem."
+    check : "Możesz sprawdzić"
+    touch_soon : "Wkrótce będą dotykać bazy po wybraniu zwycięzcy."
+    thanks : "Dzięki"
+    here : "tutaj"
+    winner_for_the_bid : "Jesteś wybrany jako zwycięzca przetargu, które zostały wykonane wcześniej w Domu Aukcyjnego dla produktu #."
+    payment_checkout_via_below_link : "Przystąpić do realizacji transakcji płatniczych za pomocą poniższego linku."
+    checkout_link : "Zamówienie Link"
+    expire_in_48hrs : "Uwaga: link wygasa w 48 godzin, Gdy związek straciła ważność nie będzie już być zwycięzcą tej kandydatury."
+    dear_customer : "Szanowni Państwo,"
+    please_review_order_information : "Prosimy o zapoznanie się i zachować następujące informacje o zamówieniu dla rekordów."
+    order_summary : "Podsumowanie Zamówienie"
+    subtotal : "Razem:"
+    order_total : "Zamówienie Razem:"
+    thank_for_business : "Dziękujemy za biznes."
+    welcome : "powitanie"
+    confirm_email_through_link : "Możesz potwierdzić swój adres e-mail konta poprzez poniższy link:"
+    total_price : "łączna cena"
+    back_to_store: Powrót do sklepu
+    order: Zamówienie
+    password_confirmation: Potwierdzenie hasła
+    zipcode: Kod pocztowy
+    Profile : "profil"
+    no_product_followed : "Produkt nie został następnie jeszcze"
+    firstname: Imię
+    lastname: Nazwisko
+    number: Numer
+    card_type : Typ karty
+    add_Update_credit_card: Dodaj / aktualizuj karty kredytowej
+    credit_card: Karta kredytowa
+    followed_products: następnie produkty
+    update_profile: aktualizacja prof
+    is_company : Czy firmy
+    mobile : przenośny
+    land_line: Linia działki
+    zip_code : kod pocztowy
+    apartment_no : Apartament nr
+    house_no : nr domu
+    street_no: Ulica nr
+    street: ulica
+    user_address : Adres użytkownika
+    email_frequency_followed_products : Częstotliwość email produktów Obserwowani
+    change_password: Zmień hasło
+    company_name: Nazwa firmy
+    daily : codziennie
+    weekly : tygodniowy
+    monthly : miesięcznie
 
     order_mailer:
           confirm_email:
@@ -93,11 +136,11 @@ pl:
             bid_accepted: "Twoja oferta została przyjęta."
             bid_order_no: "Zamówienie nr"
             bid_payment_message: "Aby otrzymać swoje zamówienie, dokonać wpłaty na konto"
-            bid_ship_message: " Your order will be shipped to following address. "
+            bid_ship_message: " Twoje zamówienie zostanie wysłane na następujący adres. "
             bid_address: "Twoje zamówienie zostanie wysłane na następujący adres."
             subject: "Dom Zamówienie"
             bid_email_subject: "Witamy w domu aukcyjnym"
-            make_payment: "To make the payment, login to your account then select 'Payment' link from top of navigation bar."
+            make_payment: "Aby dokonać płatności, zaloguj się do konta, a następnie wybierz link Płatność z góry pasku nawigacyjnym."
     my_payments: "Moje Płatności"
     Approved: "zatwierdzony"
 
