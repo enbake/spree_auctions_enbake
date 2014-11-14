@@ -30,6 +30,7 @@ module Spree
     validates :auction_end, presence: true
 
     after_save :save_categories
+    default_scope { order('updated_at DESC') }
     
     private
     

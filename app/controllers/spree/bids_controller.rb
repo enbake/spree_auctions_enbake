@@ -22,7 +22,7 @@ class Spree::BidsController < Spree::StoreController
       BeddingMailer.bedding_mail(spree_current_user, @bid).deliver
       respond_to do |format|
         flash[:success] = Spree.t(:bid_place)
-        format.html { redirect_to spree.products_path }
+        format.html {redirect_to(:back)}
       end
     else
       flash[:error] = Spree.t(:bid_place_error)

@@ -100,7 +100,9 @@ en:
     daily : Daily
     weekly : Weekly
     monthly : Monthly
-
+    Your_order_has_been_placed_successfully : Your order has been processed successfully
+    bid_placed_successfully : Bid Placed Successfully @AuctionHouse
+    congrats_bid_winner: Congrats ! Bid Winner at AuctionHouse
 
     order_mailer:
       confirm_email:

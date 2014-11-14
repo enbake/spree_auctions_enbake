@@ -129,6 +129,9 @@ pl:
     daily : codziennie
     weekly : tygodniowy
     monthly : miesięcznie
+    Your_order_has_been_placed_successfully : Twoje zamówienie zostało pomyślnie przetworzone
+    bid_placed_successfully : Oferta złożona Pomyślnie @AuctionHouse
+    congrats_bid_winner: Gratulacje ! Zwycięzca licytacji na AuctionHouse
 
     order_mailer:
           confirm_email:
