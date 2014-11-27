@@ -1,52 +1,72 @@
-<%= render :partial => 'spree/shared/main_nav_bar.html.erb' %>
-<div id="blog_post">
-<%= content_tag :div do%>
-  <div class='span-12'>
-    <div class='span2'>
-      <%= link_to 'Do Katalogu', catalog_path ,:class =>'btn btn-primary btn-block'%>
-      <hr>
-      <div class='sidebar' style='float: none;'>
-        <div class='sidebar_header'><h4>Kategorie</h4></div>
-        <ul class='sidebar_menu nav nav-pills nav-stacked'>
-          <%  Spree::Category.all.reject{|i| i.products.active_products.empty?}.each do |category| %>
-            <li class = <%= 'active' if category.id == @category.id %>><%= link_to category.name, view_category_path(category) %></li>
+  <!-- Page level plugin styles START -->
+  <link href="../../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+  <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"><!-- for slider-range -->
+  <link href="../../assets/global/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin styles END -->
+
+<% if @products.empty? %>
+  <%= Spree.t(:no_products_found) %>
+<% elsif params.key?(:keywords) %>
+  <h6 class="search-results-title"><%= Spree.t(:search_results, :keywords => h(params[:keywords])) %></h6>
+<% end %>
+<div class="main">
+  <div class="container">
+    <%#= link_to 'Catalogs', catalog_path ,:class =>'btn btn-primary btn-block'%>
+    <ul class="breadcrumb">
+        <li class="active"><%= Spree.t(:categories) %></li>
+    </ul>
+    <div class="row margin-bottom-40">
+      <!-- SIDE NAVIGATION -->
+      <div class="sidebar col-md-3 col-sm-5">
+        <ul class="list-group margin-bottom-25 sidebar-menu">
+          <% Spree::Category.all.reject{|i| i.products.active_products.empty?}.each do |category| %>
+            <li class="list-group-item clearfix"><i class="fa fa-angle-right"></i><%= link_to category.name, view_category_path(category), :class => 'active' %></li>
           <% end %>
         </ul>
       </div>
-    </div>
-    <div class='span9'>
+      <!-- SIDE NAVIGATION -->
+
+      <!-- BEGIN  BODY CONTENT -->
+      <div class="col-md-9 col-sm-7">
        <div class="section_header">
          <h3><%= @category.name %></h3>
        </div>
-       <% if @products.empty? %>
-            <%= Spree.t(:no_products_found) %>
-       <% end %>
-      <div id="showcase">
-        <div class="features_op1_row">
-          <ul class="thumbnails" data-hook>
-            <% @products.each do |product| %>
-              <li class="span3 feature" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
-                <div class="img_box">
-                  <a href="<%= url_for product %>">
-                    <% unless product.images.empty? %>
-                      <%= image_tag(product.images.first.attachment.url) %>
-                    <% end %>
-                    <span class="circle"><span class="plus">+</span></span>
-                  </a>
-                </div>
-                <div class="text">
-                  <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
-                  <div class="price selling" itemprop="price">
-                    <%= display_price(product) %>
+      <% if @products.any? %>
+        <% @products.each_slice(3) do |slice| %>
+          <!-- BEGIN PRODUCT LIST -->
+          <div class="row product-list">
+            <% slice.each do |product| %>
+              <!-- PRODUCT ITEM START -->
+              <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="product-item">
+                <div class="pi-img-wrapper">
+                  <% unless product.images.empty? %>
+                    <%= image_tag(product.images.first.attachment.url, :class => "img-responsive") %>
+                  <% else %>
+                    <%= image_tag("no_image.png", :class => "img-responsive")%>
+                  <% end %>
+                  <div>
+                    <a href="#" class="btn btn-default">View</a>
                   </div>
                 </div>
-              </li>
+              <h3><%= link_to truncate(product.name), :title => product.name %>
+              <% bidder_count = bidder_count(product) %>
+              <%= bidder_count.to_i > 1 ? "( #{bidder_count} #{Spree.t(:bidders)})" : "( #{bidder_count} #{Spree.t(:bidders)})"%></h3>
+              <div class="pi-price"><%= display_price(product) %></div>
+              <% if spree_current_user %>
+                <%= link_to "#{ product.followers.where(:user_id => spree_current_user.id).first ? 'UnFollow' : 'Follow'}", follow_product_follows_path(id: product.id),  :class => "btn btn-default add2cart"%>
+              <% end %>
+              </div>
+              </div>
+              <!-- PRODUCT ITEM END -->
             <% end %>
-            <% reset_cycle("classes") %>
-          </ul>
-        </div>
+          </div>
+          <!-- END PRODUCT LIST -->
+        <% end %>
+      <% end %>
       </div>
+      <!-- END BODY CONTENT -->
     </div>
   </div>
-<% end %>
 </div>
+
