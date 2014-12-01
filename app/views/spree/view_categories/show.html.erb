@@ -41,21 +41,18 @@
               <div class="product-item">
                 <div class="pi-img-wrapper">
                   <% unless product.images.empty? %>
-                    <%= image_tag(product.images.first.attachment.url, :class => "img-responsive") %>
+                    <%= image_tag(product.images.first.attachment.url, {height: 150, width: 240}) %>
                   <% else %>
-                    <%= image_tag("no_image.png", :class => "img-responsive")%>
+                    <%= image_tag("no_image.png", {height: 150, width: 240})%>
                   <% end %>
                   <div>
-                    <a href="#" class="btn btn-default">View</a>
+                    <a href="<%= url_for product %>" class="btn btn-default">View</a>
                   </div>
                 </div>
               <h3><%= link_to truncate(product.name), :title => product.name %>
               <% bidder_count = bidder_count(product) %>
               <%= bidder_count.to_i > 1 ? "( #{bidder_count} #{Spree.t(:bidders)})" : "( #{bidder_count} #{Spree.t(:bidders)})"%></h3>
               <div class="pi-price"><%= display_price(product) %></div>
-              <% if spree_current_user %>
-                <%= link_to "#{ product.followers.where(:user_id => spree_current_user.id).first ? 'UnFollow' : 'Follow'}", follow_product_follows_path(id: product.id),  :class => "btn btn-default add2cart"%>
-              <% end %>
               </div>
               </div>
               <!-- PRODUCT ITEM END -->
