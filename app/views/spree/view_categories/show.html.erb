@@ -11,16 +11,16 @@
 <% end %>
 <div class="main">
   <div class="container">
-    <%#= link_to 'Catalogs', catalog_path ,:class =>'btn btn-primary btn-block'%>
-    <ul class="breadcrumb">
-        <li class="active"><%= Spree.t(:categories) %></li>
-    </ul>
     <div class="row margin-bottom-40">
       <!-- SIDE NAVIGATION -->
       <div class="sidebar col-md-3 col-sm-5">
+        <%= link_to Spree.t(:go_catalog), catalog_path ,:class =>'btn btn-primary', :style => 'color: white;width: 100%;margin-bottom: 10px;'%>
         <ul class="list-group margin-bottom-25 sidebar-menu">
+         <ul class="breadcrumb">
+            <li class="active"><%= Spree.t(:categories) if !@products.empty? %></li>
+         </ul>
           <% Spree::Category.all.reject{|i| i.products.active_products.empty?}.each do |category| %>
-            <li class="list-group-item clearfix"><i class="fa fa-angle-right"></i><%= link_to category.name, view_category_path(category), :class => 'active' %></li>
+            <li class="list-group-item clearfix"><i class="fa fa-angle-right"></i><%= link_to category.name, view_category_path(category) %></li>
           <% end %>
         </ul>
       </div>
@@ -49,9 +49,7 @@
                     <a href="<%= url_for product %>" class="btn btn-default">View</a>
                   </div>
                 </div>
-              <h3><%= link_to truncate(product.name), :title => product.name %>
-              <% bidder_count = bidder_count(product) %>
-              <%= bidder_count.to_i > 1 ? "( #{bidder_count} #{Spree.t(:bidders)})" : "( #{bidder_count} #{Spree.t(:bidders)})"%></h3>
+              <h3><%= link_to truncate(product.name), :title => product.name %></h3>
               <div class="pi-price"><%= display_price(product) %></div>
               </div>
               </div>

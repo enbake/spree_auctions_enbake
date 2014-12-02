@@ -4,6 +4,7 @@
 en:
   hello: "Hello world"
   spree:
+    desc : "Description"
     sub_here: "Subscribe Here"
     news_letter: "Newsletter"
     your_password: "Your password"
