@@ -1,6 +1,6 @@
 pl:
   spree:
-    desc : "opis"
+    desc : "Opis"
     sub_here: "Zapisz się tutaj"
     news_letter: "Biuletyn"
     your_password: "Twoje hasło"
