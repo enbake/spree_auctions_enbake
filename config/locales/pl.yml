@@ -1,5 +1,14 @@
 pl:
   spree:
+    cancel : "anulować"
+    add : "DODAJ"
+    what_is_this : "Co to jest"
+    expire : "wygaśnięcie"
+    card_num : "Numer karty"
+    card_details : "Dane karty kredytowej"
+    personal_details : "Twoje dane osobowe"
+    your_credit_card_details : "swój Dane karty kredytowej"
+    card_code : "Kod karty"
     desc : "Opis"
     sub_here: "Zapisz się tutaj"
     news_letter: "Biuletyn"

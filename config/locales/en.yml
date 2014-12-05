@@ -4,6 +4,15 @@
 en:
   hello: "Hello world"
   spree:
+    cancel : "Cancel"
+    add : "ADD"
+    what_is_this : "what_is_this"
+    expire : "Expiration"
+    card_num : "Card Number"
+    card_details : "Credit card details"
+    personal_details : "Your personal details"
+    your_credit_card_details : "Your Credit card details"
+    card_code : "Card Code"
     desc : "Description"
     sub_here: "Subscribe Here"
     news_letter: "Newsletter"
