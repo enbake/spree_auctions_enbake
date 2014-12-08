@@ -4,7 +4,7 @@ module Spree
         @user = build_resource(params[:spree_user])
         if resource.save
           subscribe_user if  @user.subscribed
-          set_flash_message(:notice, :signed_up)
+          # set_flash_message(:notice, :signed_up)
           sign_in(:spree_user, @user)
           session[:spree_user_signup] = true
           associate_user
