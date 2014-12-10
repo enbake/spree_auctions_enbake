@@ -1,5 +1,3 @@
-//= require store/spree_frontend
-
 $(document).ready(function() {
 	$(".is-company").click( function(){
 		if ($(".is-company").is(":checked")){
