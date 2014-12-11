@@ -41,23 +41,23 @@
       <%= f.error_message_on :meta_description %>
     <% end %>
     
-    <%= f.field_container :layout do %>
+<!--     <%= f.field_container :layout do %>
       <%= f.label :layout %><br />
       <%= f.text_field :layout, :class => 'fullwidth title' %>
     <% end %>
-
+ -->
     <%= f.field_container :foreign_link do %>
       <%= f.label :foreign_link %><br />
       <%= f.text_field :foreign_link, :class => 'fullwidth title' %>
     <% end %>
 
-    <%= f.field_container :position do %>
+<!--     <%= f.field_container :position do %>
       <%= f.label :position %><br />
       <%= f.number_field :position, :min => 0 %>
-    <% end %>
+    <% end %> -->
 
     <ul id="static_page_options">
-      <li>
+      <!-- <li>
         <%= f.check_box :show_in_sidebar %>
         <%= f.label :show_in_sidebar %>
       </li>
@@ -68,15 +68,15 @@
       <li>
         <%= f.check_box :show_in_footer %>
         <%= f.label :show_in_footer %>
-      </li>
+      </li> -->
       <li>
         <%= f.check_box :visible %>
         <%= f.label :visible %>
       </li>
-      <li>
+     <!--  <li>
         <%= f.check_box :render_layout_as_partial %>
         <%= f.label :render_layout_as_partial %>
-      </li>
+      </li> -->
     </ul>
 
   </div>
