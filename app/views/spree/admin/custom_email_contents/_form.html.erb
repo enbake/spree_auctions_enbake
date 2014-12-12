@@ -13,7 +13,7 @@
             <%= f.label :name %>
         </td>
         <td class="no-border">
-            <%= f.select :name, options_for_select([["Account Confirmation Instructions", "confirmation_instructions"], ["Bid Accepted Email", "bid_accepted"], ["Order Confirmation Email", "confirm_email"]], :selected =>  f.object.name) %>
+            <%= f.select :name, options_for_select([["Account Confirmation Instructions", "confirmation_instructions"], ["Bid Accepted Email", "bid_accepted"], ["Order Confirmation Email", "confirm_email"], ["Bid Placed Email", "bid_placed_email"], ["Winner Chosen Email", "winner_chosen_email"]], :selected =>  f.object.name) %>
         </td>
     </tr>
     <tr class="no=border">
@@ -51,6 +51,14 @@
                     <p> Phone: <%=code%></p>
                 <% end%>
               <% end %>
+            </div>
+            <div id="bid_placed_email" class="short_codes" style="display: none;">
+              <p>Product: #product</p>
+              <p>Product Url: #url_of_product</p>
+            </div>
+            <div id="winner_chosen_email" class="short_codes" style="display: none;">
+              <p>Product: #product</p>
+              <p>Payment: #payment</p>
             </div>
         </td>
         
