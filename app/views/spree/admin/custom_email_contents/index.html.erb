@@ -3,9 +3,9 @@
 <%end%>
 
 <% content_for :page_actions do %>
-  <li id="new_navigation_link">
-  <%= button_link_to Spree.t(:new_email_content), new_admin_custom_email_content_path, {:icon => 'icon-plus' } %>
-  </li>
+  <!--<li id="new_navigation_link">-->
+  <!--<%#= button_link_to Spree.t(:new_email_content), new_admin_custom_email_content_path, {:icon => 'icon-plus' } %>-->
+  <!--</li>-->
 <%end%> 
 
 <% if @email_contents.any? %>
@@ -25,9 +25,9 @@
             <td class="actions" data-hook="navigation_index_row_actions_edit">
               <a href="<%=edit_admin_custom_email_content_path(email)%>" class="edit icon_link with-tip icon-edit no-text"></a>
             </td>
-            <td class="actions" data-hook="navigation_index_row_actions">
-              <a href="<%=admin_custom_email_content_path(email)%>" class="delete-resource icon_link with-tip icon-trash no-text" data-method="delete" data-action="destroy" data-confirm="Are you sure?"></a>
-            </td>
+            <!--<td class="actions" data-hook="navigation_index_row_actions">-->
+              <!--<a href="<%#=admin_custom_email_content_path(email)%>" class="delete-resource icon_link with-tip icon-trash no-text" data-method="delete" data-action="destroy" data-confirm="Are you sure?"></a>-->
+            <!--</td>-->
          <% end %>
            </tr>
     </tbody>

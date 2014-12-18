@@ -13,7 +13,8 @@
             <%= f.label :name %>
         </td>
         <td class="no-border">
-            <%= f.select :name, options_for_select([["Account Confirmation Instructions", "confirmation_instructions"], ["Bid Accepted Email", "bid_accepted"], ["Order Confirmation Email", "confirm_email"], ["Bid Placed Email", "bid_placed_email"], ["Winner Chosen Email", "winner_chosen_email"]], :selected =>  f.object.name) %>
+          <%#= f.select :name, options_for_select([["Account Confirmation Instructions", "confirmation_instructions"], ["Bid Accepted Email", "bid_accepted"], ["Order Confirmation Email", "confirm_email"], ["Bid Placed Email", "bid_placed_email"], ["Winner Chosen Email", "winner_chosen_email"]], :selected =>  f.object.name) %>
+          <%= f.object.display_name %>
         </td>
     </tr>
     <tr class="no=border">
@@ -23,7 +24,7 @@
         <td class="no-border taget">
             <%= f.text_area :body, :id => "email_content", value: @email_content.body[I18n.locale].present? ? @email_content.body[I18n.locale] : "" %>
             <p></p>Use the following short codes in the text to set their values accordingly:</p> 
-            <div id="confirmation_instructions" class="short_codes">
+            <div id="confirmation_instructions" class="short_codes" style="display: none;">
               <p>User Email: #user_email</p>
               <p>Confirm Account Link on signup: #confirm_account_link</p>
             </div>
@@ -52,14 +53,17 @@
                 <% end%>
               <% end %>
             </div>
-            <div id="bid_placed_email" class="short_codes" style="display: none;">
-              <p>Product: #product</p>
-              <p>Product Url: #url_of_product</p>
+          <%if f.object.name == "bid_placed_email" %>
+            <div id="bid_placed_email" class="short_codes" >
+              <p>Product Name: #product</p>
+              <p>Product URL: #url_of_product</p>
             </div>
-            <div id="winner_chosen_email" class="short_codes" style="display: none;">
-              <p>Product: #product</p>
-              <p>Payment: #payment</p>
+          <%elsif f.object.name == "winner_chosen_email" %>
+            <div id="winner_chosen_email" class="short_codes">
+              <p>Product URL: #product</p>
+              <p>Payment URL: #payment</p>
             </div>
+          <%end%>
         </td>
         
     </tr>

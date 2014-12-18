@@ -35,7 +35,7 @@ Spree::Core::Engine.routes.draw do
         resources :categories
         resources :author_bios
          resources :navigations
-        resources :custom_email_contents
+        resources :custom_email_contents, except: [:show, :new]
         get '/sort_nav_up' => 'navigations#sort_nav_up'
         get '/sort_nav_down' =>'navigations#sort_nav_down'
         resources :products do
