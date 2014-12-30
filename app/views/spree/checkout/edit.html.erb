@@ -1,0 +1,20 @@
+<div id="checkout">
+  <div class="row">
+    <p class="col-xs-1"></p>
+  <h1><%= Spree.t(:checkout)%></h1>
+  </div>
+  <br clear="left" />
+  <%= render "spree/shared/error_messages", :target => @order %>
+  <% if(@order.state == "Approved") %>
+      <%= render("spree/checkout/paypal_checkout") if @order.payable_via_paypal?  %>
+  <% else %>
+      <%= form_for @order, :url => update_checkout_path(@order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
+          <%= render @order.state, :form => form %>
+          <input id="post-final" type="submit" style="display:none"/>
+      <% end %>
+  <% end %>
+</div>
+
+<% if I18n.locale != :en %>
+    <script src='/assets/jquery.validate/localization/messages_<%= I18n.locale %>.js'></script>
+<% end %>

@@ -1,0 +1,26 @@
+<tr class="<%= cycle('', 'alt') %> line-item">
+  <td class="checkout-image" data-hook="cart_item_image">
+    <% if variant.images.length == 0 %>
+      <%= link_to small_image(variant.product), variant.product %>
+    <% else %>
+      <%= link_to(image_tag(variant.images.first.attachment.url(:small)), variant.product) %>
+    <% end %>
+  </td>
+  <td class="checkout-description" data-hook="cart_item_description" style="padding-right: 0px;padding-left: 20px;">
+    <h3><%= link_to variant.product.name.capitalize, product_path(variant.product) %></h3>
+    <%= variant.options_text %>
+    <% if @order.insufficient_stock_lines.include? line_item %>
+      <span class="out-of-stock">
+        <%= Spree.t(:out_of_stock) %>&nbsp;&nbsp;<br />
+      </span>
+    <% end %>
+    <%= line_item_description(variant) %>
+  </td>
+  <td class="checkout-price" >
+    <strong>
+
+    <%= line_item.single_money.to_html %>
+    </strong>
+  </td>
+  
+</tr>

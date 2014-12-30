@@ -10,4 +10,8 @@ Spree::Address.class_eval do
     callback.raw_filter.attributes.delete :address2 if callback.raw_filter.is_a?(ActiveModel::Validations::PresenceValidator)
   end
 
+  def state_validate
+    true
+  end
+
 end
