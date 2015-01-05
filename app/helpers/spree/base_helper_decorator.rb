@@ -1,6 +1,11 @@
 module Spree
   module BaseHelper
-    
+
+    def display_max_price(max_bid_price)
+      Spree::Money.new(max_bid_price, { currency: Spree::Config[:currency] }).to_html   
+    end
+
+
     def link_to_cart(text = nil)
       return "" if current_spree_page?(spree.cart_path)
 
