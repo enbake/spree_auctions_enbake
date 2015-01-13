@@ -9,4 +9,12 @@ class Spree::Bid < ActiveRecord::Base
     bid_obj.save
   end
 
+  def outbid_users
+  	emails = []
+  	self.product.bids.map do |bid|
+  	  emails << bid.user.email unless bid.user == self.user
+    end
+   	emails
+  end
+
 end

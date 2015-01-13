@@ -110,6 +110,7 @@ pl:
     logout: Wyloguj
     hello : 'Halo'
     thanks_message : "Dzięki Ci pokazując zainteresowanie Produktu. Twoja oferta znalazła się powodzeniem."
+    outbid_messgae : "Twoja oferta została przebita o produkt"
     check : "Możesz sprawdzić"
     touch_soon : "Wkrótce będą dotykać bazy po wybraniu zwycięzcy."
     thanks : "Dzięki"
@@ -159,6 +160,10 @@ pl:
     Your_order_has_been_placed_successfully : Twoje zamówienie zostało pomyślnie przetworzone
     bid_placed_successfully : Oferta złożona Pomyślnie @AuctionHouse
     congrats_bid_winner: Gratulacje ! Zwycięzca licytacji na AuctionHouse
+    auction_outbid : "Przebij aukcję!"
+    place_higher_bid : "Możesz umieścić ponownie wyższą stawkę przed kończącym Aukcje"
+    auction_looser : "Tracisz!"
+    looser_messgae : "Przeprosiny za niedogodności!"
 
     order_mailer:
           confirm_email:

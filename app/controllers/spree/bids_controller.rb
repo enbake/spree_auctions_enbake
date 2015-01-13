@@ -20,6 +20,7 @@ class Spree::BidsController < Spree::StoreController
 
     if @bid.save
       BeddingMailer.bedding_mail(spree_current_user, @bid).deliver
+      BeddingMailer.outbid_mail(@bid).deliver
       respond_to do |format|
         flash[:success] = Spree.t(:bid_place)
         format.html {redirect_to(:back)}

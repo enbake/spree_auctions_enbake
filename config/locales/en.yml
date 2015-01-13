@@ -76,6 +76,9 @@ en:
     details : "Details"
     auction_sold : "This Auction has already sold"
     bid_place : "Your Bid placed successfully"
+    auction_looser : "You Loose !"
+    looser_messgae : "Apology for inconvenience ! "
+    auction_outbid : "Auction OutBid !"
     bid_place_error : "Error in Bid place."
     user_not_authorized : "You are not authorized for this action"
     select_payment_method : "Please select the payment method. "
@@ -86,6 +89,8 @@ en:
     hello : 'Hello'
     thanks_message : "Thanks for you showing your interest in Product. Your Bid has been placed successfully."
     check : "You can check"
+    outbid_messgae : "Your Bid has been OutBid for product"
+    place_higher_bid : "You can place higher bid again before ending Auction"
     touch_soon : "Will touch base soon once winner is selected."
     thanks : "Thanks"
     here : "here"
@@ -144,3 +149,11 @@ en:
         make_payment: "To make the payment, login to your account then select 'Payment' link from top of navigation bar."
     my_payments: "My Payments"
     Approved: "Approved"
+    promotion_rule_types:
+      payment_charge:
+        description: 'Apply Charges for Credit Cards'
+        name: 'Payment Charge'
+    promotion_action_types:
+      pay_charge:
+        name: Pay Charge
+        description: Apply Addistional charges.

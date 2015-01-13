@@ -82,7 +82,7 @@ namespace :auction do
         winning_bid.save
 
         BeddingMailer.winning_mail(winning_bid).deliver
-
+        BeddingMailer.looser_mail(winning_bid).deliver
       end
 
     end
@@ -100,6 +100,7 @@ namespace :auction do
       bid.status ='pending_confirmation'
       bid.save
       BeddingMailer.winning_mail(bid).deliver
+      BeddingMailer.looser_mail(bid).deliver
       end
     end
 

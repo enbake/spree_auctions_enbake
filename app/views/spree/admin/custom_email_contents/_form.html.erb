@@ -63,6 +63,16 @@
               <p>Product URL: #product</p>
               <p>Payment URL: #payment</p>
             </div>
+          <%elsif f.object.name == "outbid_email" %>
+            <div id="outbid_email" class="short_codes">
+              <p>Product Name: #product</p>
+              <p>Product URL: #url_of_product</p>
+            </div>
+          <%elsif f.object.name == "looser_email" %>
+            <div id="looser_email" class="short_codes">
+              <p>Product Name: #product</p>
+              <p>Product URL: #url_of_product</p>
+            </div>
           <%end%>
         </td>
         
