@@ -15,13 +15,9 @@
 ============================================================
 <br>
 <%= Spree.t(:subtotal)%> <%= number_to_currency @order.item_total %>
-<br>
-<% @order.adjustments.select{|adj| !adj.is_tax}.each do |adj| %>
-    <%= "#{adj.label}: #{number_to_currency adj.amount}"%>
-<% end %>
-<br>
-<% @order.adjustments.tax.each do |tax| %>
-    <%= "#{tax.label}: #{number_to_currency tax.amount}"%>
+<br/>
+<% @order.adjustments.eligible.each do |adjustment| %>
+  <%= raw(adjustment.label) %> <%= adjustment.display_amount %>
 <% end %>
 <br>
 <%= Spree.t(:order_total)%> <%= number_to_currency @order.total %>
@@ -29,4 +25,3 @@
 <br>
 
 <%= Spree.t(:thank_for_business)%>
-
